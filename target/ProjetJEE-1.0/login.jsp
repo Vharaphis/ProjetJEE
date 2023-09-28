@@ -18,7 +18,7 @@
 
         <input type="submit" value="Login">
     </form>
-    <p class="footer">Don't have an account? <a href="#">Sign up</a></p>
+    <p class="footer">Don't have an account? <a href="signup.jsp">Sign up</a></p>
 </div>
 </body>
 </html>
