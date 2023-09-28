@@ -1,45 +1,84 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  -->
-    <link type="text/css" href="../resources/styles/login.css" rel="stylesheet">
-    <title>Jakarta EE - Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google-Themed Login</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 6px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #357ae8;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
 </head>
-
 <body>
-<p>tkt</p>
-<div class="d-grid gap-3">
-    <div class="p-2 bg-light border"><input class="form-control" placeholder="Login" name="champLogin" autofocus=""></div>
-    <div class="p-2 bg-light border"><input class="form-control" placeholder="Login" name="champLogin" autofocus=""></div>
-    <div class="p-2 bg-light border"><input class="form-control" placeholder="Login" name="champLogin" autofocus=""></div>
-</div>
-<div class="container" style="margin-top:30px">
-    <div class="col-md-4">
-        <div class="login-panel panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Login</h3>
-            </div>
-            <div class="d-grid gap-3">
-                <form action="hello-servlet" method="post">
-                    <fieldset>
-                        <div class="p-2 light border">
-                            <input class="form-control" placeholder="Login" name="champLogin" autofocus="">
-                        </div>
-                        <div class="p-2-group">
-                            <input class="form-control" placeholder="Mot de passe" name="champMotDePasse" type="password">
-                        </div>
+<div class="container">
+    <h1>Login</h1>
+    <form>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required>
 
-                        <input type="submit" name="action" value="Login" class="btn btn-primary"/>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-        <div class="text-bg-danger p-3">
-            login failed
-        </div>
-    </div>
-</div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
 
+        <input type="submit" value="Login">
+    </form>
+    <p class="footer">Don't have an account? <a href="#">Sign up</a></p>
+</div>
 </body>
 </html>

@@ -1,45 +1,24 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  -->
-    <link type="text/css" href="../resources/styles/login.css" rel="stylesheet">
-    <title>Jakarta EE - Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="resources/styles/login.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-<p>tkt</p>
-<div class="d-grid gap-3">
-    <div class="p-2 bg-light border"><input class="form-control" placeholder="Login" name="champLogin" autofocus=""></div>
-    <div class="p-2 bg-light border"><input class="form-control" placeholder="Login" name="champLogin" autofocus=""></div>
-    <div class="p-2 bg-light border"><input class="form-control" placeholder="Login" name="champLogin" autofocus=""></div>
-</div>
-<div class="container" style="margin-top:30px">
-    <div class="col-md-4">
-        <div class="login-panel panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Login</h3>
-            </div>
-            <div class="d-grid gap-3">
-                <form action="hello-servlet" method="post">
-                    <fieldset>
-                        <div class="p-2 light border">
-                            <input class="form-control" placeholder="Login" name="champLogin" autofocus="">
-                        </div>
-                        <div class="p-2-group">
-                            <input class="form-control" placeholder="Mot de passe" name="champMotDePasse" type="password">
-                        </div>
+<div class="container">
+    <h1>Login</h1>
+    <form>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required>
 
-                        <input type="submit" name="action" value="Login" class="btn btn-primary"/>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-        <div class="text-bg-danger p-3">
-            login failed
-        </div>
-    </div>
-</div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
 
+        <input type="submit" value="Login">
+    </form>
+    <p class="footer">Don't have an account? <a href="#">Sign up</a></p>
+</div>
 </body>
 </html>
