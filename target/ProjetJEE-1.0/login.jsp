@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h1>Login</h1>
-    <form>
+    <form method="GET" action="login">
         <label for="email">Email</label>
         <input type="text" id="email" name="email" required>
 

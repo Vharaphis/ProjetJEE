@@ -31,5 +31,22 @@ public class UserSessionBean {
     private String hashPasswordWithSalt(String password, String salt) {
         return BCrypt.hashpw(password, salt);
     }
+
+    public UserEntity getUserByEmail(String email) {
+        return entityManager.find(UserEntity.class, email);
+    }
+
+    public void logUser(String email, String password) {
+        UserEntity user = getUserByEmail(email);
+        String hashedPassword = user.getPasswordHash();
+
+        boolean passwordMatching = BCrypt.checkpw(password, hashedPassword);
+        if (passwordMatching) {
+            System.out.println("Pw are the same, logging to dbb");
+        }
+        else {
+            System.out.println("Pw are not the same");
+        }
+    }
 }
 
