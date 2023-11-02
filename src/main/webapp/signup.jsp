@@ -27,8 +27,8 @@
 
         <label for="profession-select">Profession</label>
         <select name="profession" id="profession-select">
-            <option value="student">student</option>
-            <option value="tutor">tutor</option>
+            <option value="Apprentice">Apprentice</option>
+            <option value="Tutor">Tutor</option>
         </select>
 
         <input type="submit" value="Sign Up">

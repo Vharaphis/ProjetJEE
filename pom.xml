@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>homies.goats</groupId>
-  <artifactId>ProjetJEE</artifactId>
+  <artifactId>projet_jee</artifactId>
   <version>1.0</version>
-  <name>ProjetJEE</name>
+  <name>projet_jee</name>
   <packaging>war</packaging>
 
   <properties>

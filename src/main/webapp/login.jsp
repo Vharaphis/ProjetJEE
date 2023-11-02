@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h1>Login</h1>
-    <form method="GET" action="login">
+    <form method="POST" action="login">
         <label for="email">Email</label>
         <input type="text" id="email" name="email" required>
 
@@ -17,7 +17,7 @@
         <input type="password" id="password" name="password" required>
 
         <input type="submit" value="Login">
-    </form>
+    </form>-->
     <p class="footer">Don't have an account? <a href="signup.jsp">Sign up</a></p>
 </div>
 </body>
