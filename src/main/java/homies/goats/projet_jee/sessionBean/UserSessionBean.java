@@ -34,19 +34,10 @@ public class UserSessionBean {
     }
 
     public boolean logUser(String email, String password) {
-
         UserEntity user = getUserByEmail(email);
         String hashedPassword = user.getPasswordHash();
 
-        boolean passwordMatching = BCrypt.checkpw(password, hashedPassword);
-        if (passwordMatching) {
-            System.out.println("Pw are the same, logging to dbb");
-            return true;
-        }
-        else {
-            System.out.println("Pw are not the same");
-            return false;
-        }
+        return BCrypt.checkpw(password, hashedPassword);
     }
 }
 

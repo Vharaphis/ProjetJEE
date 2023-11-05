@@ -16,16 +16,11 @@ public class SignUpServlet extends HttpServlet {
     private UserSessionBean userSessionBean;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //take parameter from the form
-        System.out.println("HEHE BOIII\nahzauehaz");
-
         String name = request.getParameter("name");
         String forename = request.getParameter("forename");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         UserType userType = UserType.getUserType(request.getParameter("profession"));
-
-        System.out.println("\n\n\nUSER TYPE : " + userType.toString());
 
         //create a userEntity
         UserEntity user = new UserEntity();
@@ -33,8 +28,6 @@ public class SignUpServlet extends HttpServlet {
         user.setForename(forename);
         user.setEmail(email);
         user.setUserType(userType);
-
-        System.out.println("We're in signupServlet creating user : " + user);
 
         //Send userEntity to the session bean
         userSessionBean.registerUser(user, password);
