@@ -20,9 +20,9 @@ public class LoginServlet extends HttpServlet {
         if (userSessionBean.logUser(email, password)) {
             //Session server-side, donc pas de risques spécifiques
             request.getSession().setAttribute("authenticatedUser", email);
-            response.sendRedirect("/secured/dashboard.jsp");
+            response.sendRedirect("gestion");
         } else {
-            response.sendRedirect("/login-error.jsp");
+            response.sendRedirect("login-error.jsp");
         }
     }
 }

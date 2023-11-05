@@ -17,6 +17,8 @@ public class SignUpServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //take parameter from the form
+        System.out.println("HEHE BOIII\nahzauehaz");
+
         String name = request.getParameter("name");
         String forename = request.getParameter("forename");
         String email = request.getParameter("email");

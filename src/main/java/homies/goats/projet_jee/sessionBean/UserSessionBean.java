@@ -1,5 +1,6 @@
 package homies.goats.projet_jee.sessionBean;
 
+import homies.goats.projet_jee.constant.SQLQueries;
 import homies.goats.projet_jee.model.UserEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
@@ -24,7 +25,8 @@ public class UserSessionBean {
 
     public UserEntity getUserByEmail(String email) {
         try {
-            TypedQuery<UserEntity> query = entityManager.createQuery("SELECT u FROM UserEntity u WHERE u.email = :email", UserEntity.class);
+            //TypedQuery<UserEntity> query = entityManager.createQuery("SELECT u FROM UserEntity u WHERE u.email = :email", UserEntity.class);
+            TypedQuery<UserEntity> query = SQLQueries.createQuery(SQLQueries.GET_USER_BY_EMAIL, entityManager, UserEntity.class);
             query.setParameter("email", email);
             return query.getSingleResult();
         } catch (NoResultException e) {

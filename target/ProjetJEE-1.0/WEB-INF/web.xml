@@ -7,6 +7,7 @@
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+
     <servlet>
         <servlet-name>SignUpServlet</servlet-name>
         <servlet-class>homies.goats.projet_jee.servlet.SignUpServlet</servlet-class>
@@ -15,6 +16,7 @@
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/signup</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>homies.goats.projet_jee.servlet.LoginServlet</servlet-class>
@@ -24,6 +26,15 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>WelcomeServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.WelcomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WelcomeServlet</servlet-name>
+        <url-pattern>/gestion</url-pattern>
+    </servlet-mapping>
+    
     <filter>
         <filter-name>CORSFilter</filter-name>
         <filter-class>homies.goats.projet_jee.CORSFilter</filter-class>

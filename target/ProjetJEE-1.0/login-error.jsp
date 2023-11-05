@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    well it didn't worked my chinois
+    well it didn't work
 </head>
 <body>
 

@@ -21,6 +21,8 @@ public class CORSFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String requestURI = httpRequest.getRequestURI();
 
+        System.out.println("WTF");
+
         if (httpRequest.getSession().getAttribute("authenticatedUser") == null) {
             if (!requestURI.endsWith("/signup.jsp") || !requestURI.endsWith("/login.jsp")){
                 return;
