@@ -1,8 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Mon Site</title>
   <link href="resources/styles/header.css" rel="stylesheet" type="text/css">
   <link href="resources/styles/gestion.css" rel="stylesheet" type="text/css">
@@ -10,7 +13,6 @@
   <link href="resources/styles/common.css" rel="stylesheet" type="text/css">
   <link href="resources/styles/popup.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-
 
 </head>
 <body>
@@ -58,25 +60,27 @@
         <th></th>
       </tr>
       </thead>
-      <tr>
-        <td>MoreBullets</td>
-        <td>Ineed</td>
-        <td>ineedmorebullets@gmail.com</td>
-        <td>0666666666</td>
-        <td>Apprenti</td>
-        <td><button class="submit" onclick="openPopup()">Details</button></td>
-      </tr>
-      <tr>
-        <td>Shaco</td>
-        <td>Ce</td>
-        <td>champion@dencule.com</td>
-        <td>0666666666</td>
-        <td>Tutor</td>
-        <td></td>
-      </tr>
+
+      <c:if test="${not empty USER_LIST}">
+        <c:forEach var="user" items="${USER_LIST}">
+          <tr>
+            <td>${user.lastname}</td>
+            <td>${user.forename}</td>
+            <td>${user.email}</td>
+            <td>${user.phone}</td>
+            <td>${user.userType}</td>
+            <td><button class="submit" onclick="openPopup()">Details</button></td>
+          </tr>
+        </c:forEach>
+      </c:if>
     </table>
   </div>
 </div>
+
+<c:if test="${empty USER_LIST}">
+  <p>No data found.</p>
+</c:if>
+
 <div id="popup" class="popup">
   <div class="popup-content">
     <span class="close" id="close-popup" onclick="closePopup()">&times;</span>

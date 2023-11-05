@@ -17,11 +17,8 @@ public class WelcomeServlet extends HttpServlet {
     private UserSessionBean userSessionBean;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.setAttribute("name", "heheboi");
-        request.setAttribute("login", "hahaboi");
-
-
-
+        request.setAttribute("USER_LIST", userSessionBean.getAllUsers());
+        System.out.println("mamacita");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/gestion.jsp");
         dispatcher.forward(request, response);
     }

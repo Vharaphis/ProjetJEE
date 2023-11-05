@@ -6,6 +6,8 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.List;
+
 @Stateless
 public class UserSessionBean {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("projet_jee");
@@ -33,8 +35,17 @@ public class UserSessionBean {
         }
     }
 
+    public List<UserEntity> getAllUsers(){
+        try {
+            return entityManager.createQuery(SQLQueries.GET_ALL_USERS.getQueryString(), UserEntity.class).getResultList();
+        } catch (NoResultException e){
+            return null;
+        }
+    }
+
     public boolean logUser(String email, String password) {
         UserEntity user = getUserByEmail(email);
+        if(user == null){return false;}
         String hashedPassword = user.getPasswordHash();
 
         return BCrypt.checkpw(password, hashedPassword);

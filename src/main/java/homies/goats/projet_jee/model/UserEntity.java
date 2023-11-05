@@ -31,9 +31,8 @@ public class UserEntity implements Serializable {
     @Column(name = "salt", nullable = true, length = 255)
     private String salt;
     @Basic
-    @Enumerated(EnumType.STRING)
-    @Column(name = "userType", nullable = true)
-    private UserType userType;
+    @Column(name = "userType", nullable = true, length = 10)
+    private String userType;
 
     public int getUserId() {
         return userId;
@@ -96,7 +95,7 @@ public class UserEntity implements Serializable {
     }
 
     public void setUserType(UserType userType) {
-        this.userType = userType;
+        this.userType = userType.getType();
     }
 
     @Override

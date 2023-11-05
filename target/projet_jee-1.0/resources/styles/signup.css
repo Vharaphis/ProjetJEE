@@ -1,0 +1,26 @@
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 33em;
+    margin: 0 auto;
+
+}
+
+h1 {
+    margin-bottom: 1.25em;
+}
+
+
+
+select {
+    width: 112% !important;
+}
+
+.footer {
+    margin-top: 1.25em;
+    font-size: 1em;
+    color: #888;
+}

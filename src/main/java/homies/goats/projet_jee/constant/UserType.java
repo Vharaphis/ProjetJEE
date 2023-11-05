@@ -4,8 +4,7 @@ public enum UserType {
     Tutor("Tutor"),
     Apprentice("Apprentice");
 
-
-    private String type;
+    private final String type;
     UserType(String type){
         this.type = type;
     }
@@ -16,5 +15,9 @@ public enum UserType {
         } else {
             return Apprentice;
         }
+    }
+
+    public String getType(){
+        return this.type;
     }
 }
