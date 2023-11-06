@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +22,9 @@
 
         <input type="submit" value="Login" class="submit">
     </form>
+    <c:if test="${error}">
+        <p class="footer" style="color: red">Wrong email or password.</p>
+    </c:if>
     <p class="footer">Don't have an account? <a href="signup.jsp">Sign up</a></p>
 </div>
 </body>
