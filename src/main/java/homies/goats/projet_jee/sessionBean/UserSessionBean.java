@@ -25,6 +25,36 @@ public class UserSessionBean {
         entityManager.getTransaction().commit();
     }
 
+    //returns true if it fails
+    public boolean updateUser(UserEntity authenticatedUser, UserEntity modifiedUser, String newPassword, String passwordConfirmation) {
+        //name, forename, email and phone are fields that are automatically set in the .jsp. They shouldn't be nulled.
+        if(isNullOrBlank(modifiedUser.getLastname()) || isNullOrBlank(modifiedUser.getForename()) ||
+                isNullOrBlank(modifiedUser.getEmail()) || isNullOrBlank(modifiedUser.getPhone())){
+            return true;
+        }
+
+        authenticatedUser.setLastname(modifiedUser.getLastname());
+        authenticatedUser.setForename(modifiedUser.getForename());
+        authenticatedUser.setEmail(modifiedUser.getEmail());
+        authenticatedUser.setPhone(modifiedUser.getPhone());
+
+        //Password / ConfirmPassword on the other hand can be nulled, but if they are, the user password shouldn't be updated.
+        if(!isNullOrBlank(newPassword) && !isNullOrBlank(passwordConfirmation)){
+            if(newPassword.equals(passwordConfirmation)){
+                String salt = BCrypt.gensalt();
+                String passwordHash = BCrypt.hashpw(newPassword, salt);
+                authenticatedUser.setSalt(salt);
+                authenticatedUser.setPasswordHash(passwordHash);
+            }
+        }
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(authenticatedUser);
+        entityManager.getTransaction().commit();
+
+        return false;
+    }
+
     public UserEntity getUserByEmail(String email) {
         try {
             TypedQuery<UserEntity> query = entityManager.createQuery(SQLQueries.GET_USER_BY_EMAIL.getQueryString(), UserEntity.class);
@@ -49,6 +79,10 @@ public class UserSessionBean {
         String hashedPassword = user.getPasswordHash();
 
         return BCrypt.checkpw(password, hashedPassword);
+    }
+
+    public boolean isNullOrBlank(String s){
+        return (s == null || s.isBlank());
     }
 }
 
