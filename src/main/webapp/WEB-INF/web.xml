@@ -54,6 +54,24 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>ArchiveUserServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.ArchiveUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ArchiveUserServlet</servlet-name>
+        <url-pattern>/archive</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateUserServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.CreateUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateUserServlet</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>CORSFilter</filter-name>
         <filter-class>homies.goats.projet_jee.filters.CORSFilter</filter-class>

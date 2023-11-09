@@ -1,4 +1,3 @@
-
 .container {
     position: absolute;
     top: 50%;
@@ -11,12 +10,6 @@
 
 h1 {
     margin-bottom: 1.25em;
-}
-
-
-
-select {
-    width: 112% !important;
 }
 
 .footer {

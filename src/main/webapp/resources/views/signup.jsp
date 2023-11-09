@@ -1,11 +1,14 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link href="../styles/signup.css" rel="stylesheet" type="text/css">
-    <link href="../styles/common.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/styles/signup.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/styles/common.css" rel="stylesheet" type="text/css">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
@@ -50,7 +53,7 @@
 
         <input type="submit" value="Sign up" class="submit">
     </form>
-    <p class="footer">Already have an account? <a href="login.jsp">Login</a></p>
+    <p class="footer">Already have an account? <a href="login">Login</a></p>
 </div>
 </body>
 </html>

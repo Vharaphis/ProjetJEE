@@ -17,9 +17,8 @@ public class AuthenticationFilter implements Filter{
         String requestURI = httpRequest.getRequestURI();
 
         if (httpRequest.getSession().getAttribute("authenticatedUser") == null) {
-            if (!(requestURI.endsWith("/login") || requestURI.endsWith("/login.jsp") || requestURI.endsWith("/signup") || requestURI.endsWith("/signup.jsp"))){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
-                dispatcher.forward(request, response);
+            if (!(requestURI.contains("/resources/") || requestURI.endsWith("/login") || requestURI.endsWith("/login.jsp") || requestURI.endsWith("/signup") || requestURI.endsWith("/signup.jsp"))){
+                httpResponse.sendRedirect("login");
                 return;
             }
         }

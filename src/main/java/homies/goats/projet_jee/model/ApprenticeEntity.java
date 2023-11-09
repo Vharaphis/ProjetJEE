@@ -19,6 +19,9 @@ public class ApprenticeEntity {
     @Column(name = "major", nullable = true, length = 255)
     private String major;
     @Basic
+    @Column(name = "isArchived")
+    private Boolean isArchived;
+    @Basic
     @Column(name = "idCompany", nullable = true)
     private Integer idCompany;
     @Basic
@@ -58,6 +61,14 @@ public class ApprenticeEntity {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    public Boolean getIsArchived() {
+        return isArchived;
+    }
+
+    public void setIsArchived(Boolean isArchived) {
+        this.isArchived = isArchived;
     }
 
     public Integer getIdCompany() {

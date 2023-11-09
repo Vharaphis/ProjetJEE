@@ -16,23 +16,35 @@
         <h1>Edit your user profile</h1>
         <form action="update-profile" method="post">
 
-            <label for="lastname">Last Name :</label>
-            <input type="text" id="lastname" name="lastname" placeholder="Last name" value="${authenticatedUser.lastname}">
+            <div class="half-width flex">
+                <label for="lastname">Last Name :</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Last name" value="${authenticatedUser.lastname}">
+            </div>
 
-            <label for="forename">Forename :</label>
-            <input type="text" id="forename" name="forename" placeholder="Forename" value="${authenticatedUser.forename}">
+            <div class="half-width flex">
+                <label for="forename">Forename :</label>
+                <input type="text" id="forename" name="forename" placeholder="Forename" value="${authenticatedUser.forename}">
+            </div>
 
-            <label for="email">Email :</label>
-            <input type="text" id="email" name="email" placeholder="Email" value="${authenticatedUser.email}">
+            <div class="half-width flex">
+                <label for="email">Email :</label>
+                <input type="text" id="email" name="email" placeholder="Email" value="${authenticatedUser.email}">
+            </div>
 
-            <label for="phone">Phone :</label>
-            <input type="text" id="phone" name="phone" placeholder="Phone" value="${authenticatedUser.phone}">
+            <div class="half-width flex">
+                <label for="phone">Phone :</label>
+                <input type="text" id="phone" name="phone" placeholder="Phone" value="${authenticatedUser.phone}">
+            </div>
 
-            <label for="newPassword">New password :</label>
-            <input type="password" id="newPassword" name="newPassword" placeholder="new password">
+            <div class="half-width flex">
+                <label for="newPassword">New password :</label>
+                <input type="password" id="newPassword" name="newPassword" placeholder="new password">
+            </div>
 
-            <label for="confirmPassword">Confirm password :</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password">
+            <div class="half-width flex">
+                <label for="confirmPassword">Confirm password :</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password">
+            </div>
 
             <input type="submit" value="Update my user profile">
         </form>

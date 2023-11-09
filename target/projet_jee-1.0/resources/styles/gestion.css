@@ -65,3 +65,11 @@ h1 {
     width: 80%;
     margin:0 auto;
 }
+
+.create-user{
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+    width: fit-content!important;
+    padding: 1em!important;
+}

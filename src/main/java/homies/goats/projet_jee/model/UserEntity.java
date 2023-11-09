@@ -90,7 +90,7 @@ public class UserEntity implements Serializable {
         this.salt = salt;
     }
 
-    public Object getUserType() {
+    public String getUserType() {
         return userType;
     }
 

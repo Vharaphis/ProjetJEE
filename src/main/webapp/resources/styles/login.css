@@ -6,10 +6,10 @@ body {
 
 .container {
     position: absolute;
-    top: 2.5em;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    max-width: 21.875em;
+    transform: translate(-50%, -50%);
+    max-width: 33em;
     margin: 0 auto;
 }
 
@@ -25,13 +25,26 @@ label {
     text-align: left;
 }
 
-input[type="text"],
-input[type="password"] {
-    width: 5.625em;
-}
-
 .footer {
     margin-top: 1.25em;
     font-size: 0.875em;
     color: #888;
+}
+
+.login-row{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+.fillInput-login{
+    padding: 0.625em;
+    border: 0.0625em solid #ccc;
+    border-radius: 0.25em;
+    font-size: 1em;
+}
+
+.login-submit{
+    margin-top: 1.5em;
 }

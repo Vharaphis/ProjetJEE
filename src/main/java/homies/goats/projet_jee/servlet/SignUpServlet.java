@@ -4,6 +4,8 @@ import homies.goats.projet_jee.constant.UserType;
 import homies.goats.projet_jee.sessionBean.UserSessionBean;
 import homies.goats.projet_jee.model.UserEntity;
 import jakarta.ejb.EJB;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,6 +16,11 @@ public class SignUpServlet extends HttpServlet {
 
     @EJB
     private UserSessionBean userSessionBean;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/resources/views/signup.jsp");
+        dispatcher.forward(request, response);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = request.getParameter("name");
@@ -33,6 +40,6 @@ public class SignUpServlet extends HttpServlet {
         userSessionBean.registerUser(user, password);
 
         //redirect website user to the login page
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("login");
     }
 }
