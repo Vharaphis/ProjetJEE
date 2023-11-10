@@ -16,7 +16,7 @@ public class CreateCompanyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String socialReason = request.getParameter("socialReason");
         String companyAddress = request.getParameter("companyAddress");
-        String companyInfos = request.getParameter("companyInfos");
+        String companyInfos = request.getParameter("companyInfo");
 
         if(socialReason.isBlank() || companyAddress.isBlank()){
             response.sendRedirect("gestion?error=true");

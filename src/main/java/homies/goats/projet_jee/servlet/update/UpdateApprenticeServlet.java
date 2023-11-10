@@ -51,6 +51,6 @@ public class UpdateApprenticeServlet extends HttpServlet {
         String major = request.getParameter("major");
 
         apprenticeSessionBean.updateApprentice(academicYear, program, major, apprentice);
-        response.sendRedirect("detatils?userId=" + request.getParameter("idUser"));
+        response.sendRedirect("details?userId=" + request.getParameter("idUser"));
     }
 }
