@@ -3,20 +3,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
-  <persistence-unit name="projet_jee">
-    <class>homies.goats.projet_jee.model.ApprenticeEntity</class>
-    <class>homies.goats.projet_jee.model.CompanyEntity</class>
-    <class>homies.goats.projet_jee.model.FeedbackEntity</class>
-    <class>homies.goats.projet_jee.model.MissionEntity</class>
-    <class>homies.goats.projet_jee.model.RatingEntity</class>
-    <class>homies.goats.projet_jee.model.TutorEntity</class>
-    <class>homies.goats.projet_jee.model.UserEntity</class>
-    <class>homies.goats.projet_jee.model.VisitEntity</class>
+  <persistence-unit name="default">
 
-    <properties>
-      <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/projet_jee"/>
-      <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="eclipselink.jdbc.user" value="root"/>
-    </properties>
   </persistence-unit>
 </persistence>
