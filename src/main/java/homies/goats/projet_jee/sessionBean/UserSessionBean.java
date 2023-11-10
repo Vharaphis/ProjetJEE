@@ -2,9 +2,8 @@ package homies.goats.projet_jee.sessionBean;
 
 import homies.goats.projet_jee.constant.SQLQueries;
 import homies.goats.projet_jee.constant.UserType;
-import homies.goats.projet_jee.model.ApprenticeEntity;
-import homies.goats.projet_jee.model.TutorEntity;
 import homies.goats.projet_jee.model.UserEntity;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 import org.mindrot.jbcrypt.BCrypt;
@@ -16,44 +15,35 @@ public class UserSessionBean {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("projet_jee");
     EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-    public void registerUser(UserEntity user, String password) {
+    @EJB
+    ApprenticeSessionBean apprenticeSessionBean;
+    @EJB
+    TutorSessionBean tutorSessionBean;
+
+    public void createUser(String name, String forename, String email, UserType userType, String password) {
+        UserEntity user = new UserEntity();
+        user.setLastname(name);
+        user.setForename(forename);
+        user.setEmail(email);
+        user.setUserType(userType);
+
         String salt = BCrypt.gensalt();
         String passwordHash = BCrypt.hashpw(password, salt);
 
         user.setSalt(salt);
         user.setPasswordHash(passwordHash);
 
-        String userType = user.getUserType();
-
         entityManager.getTransaction().begin();
         entityManager.persist(user);
         entityManager.getTransaction().commit();
 
-        entityManager.getTransaction().begin();
-        if (userType.equals(UserType.Apprentice.getType())){
-            //Create associated "Apprentice" user in database
-            ApprenticeEntity associatedEntity = new ApprenticeEntity();
-            associatedEntity.setUserId(user.getUserId());
-            associatedEntity.setIsArchived(false);
-            entityManager.persist(associatedEntity);
-        } else if (userType.equals(UserType.Tutor.getType())){
-            //Create associated "Tutor" user in database
-            TutorEntity associatedEntity = new TutorEntity();
-            associatedEntity.setUserId(user.getUserId());
-            entityManager.persist(associatedEntity);
+        if (userType == UserType.Apprentice){
+            apprenticeSessionBean.createApprentice(user.getUserId());
+        } else if (userType == UserType.Tutor){
+            tutorSessionBean.createTutor(user.getUserId());
         } else {
-            //There has been a problem : no type = bad
             return;
         }
-        entityManager.getTransaction().commit();
-    }
-
-
-    public void changeApprenticeArchiveStatus(ApprenticeEntity apprentice){
-        apprentice.setIsArchived(!apprentice.getIsArchived());
-        entityManager.getTransaction().begin();
-        entityManager.merge(apprentice);
-        entityManager.getTransaction().commit();
     }
 
     //returns true if it fails
@@ -86,6 +76,14 @@ public class UserSessionBean {
         return false;
     }
 
+    public List<UserEntity> getTutorApprentices(int tutorId){
+        try {
+            return entityManager.createQuery(SQLQueries.GET_ALL_APPRENTICES_OF_TUTOR.getQueryString(), UserEntity.class).getResultList();
+        } catch (NoResultException e){
+            return null;
+        }
+    }
+
     public UserEntity getUserByEmail(String email) {
         try {
             TypedQuery<UserEntity> query = entityManager.createQuery(SQLQueries.GET_USER_BY_EMAIL.getQueryString(), UserEntity.class);
@@ -96,10 +94,10 @@ public class UserSessionBean {
         }
     }
 
-    public ApprenticeEntity getApprenticeByUserId(int id) {
+    public UserEntity getUserById(int userId) {
         try {
-            TypedQuery<ApprenticeEntity> query = entityManager.createQuery(SQLQueries.GET_APPRENTICE_BY_USER_ID.getQueryString(), ApprenticeEntity.class);
-            query.setParameter("userId", id);
+            TypedQuery<UserEntity> query = entityManager.createQuery(SQLQueries.GET_USER_BY_ID.getQueryString(), UserEntity.class);
+            query.setParameter("userId", userId);
             return query.getSingleResult();
         } catch (NoResultException e) {
             return null;

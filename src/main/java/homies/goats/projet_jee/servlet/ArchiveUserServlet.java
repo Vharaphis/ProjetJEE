@@ -2,6 +2,7 @@ package homies.goats.projet_jee.servlet;
 
 import homies.goats.projet_jee.model.ApprenticeEntity;
 import homies.goats.projet_jee.model.UserEntity;
+import homies.goats.projet_jee.sessionBean.ApprenticeSessionBean;
 import homies.goats.projet_jee.sessionBean.UserSessionBean;
 import jakarta.ejb.EJB;
 import jakarta.servlet.RequestDispatcher;
@@ -15,6 +16,8 @@ import java.io.IOException;
 public class ArchiveUserServlet extends HttpServlet {
     @EJB
     private UserSessionBean userSessionBean;
+    @EJB
+    private ApprenticeSessionBean apprenticeSessionBean;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String userId = request.getParameter("userId");
@@ -34,14 +37,14 @@ public class ArchiveUserServlet extends HttpServlet {
             return;
         }
 
-        ApprenticeEntity apprentice = userSessionBean.getApprenticeByUserId(convertedUserId);
+        ApprenticeEntity apprentice = apprenticeSessionBean.getApprenticeByUserId(convertedUserId);
         if(apprentice == null){
             System.out.println("Apprentice is null");
             response.sendRedirect("gestion");
             return;
         }
 
-        userSessionBean.changeApprenticeArchiveStatus(apprentice);
+        apprenticeSessionBean.changeApprenticeArchiveStatus(apprentice);
         response.sendRedirect("gestion");
     }
 }

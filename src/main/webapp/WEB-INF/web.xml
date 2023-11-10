@@ -11,7 +11,7 @@
 
     <servlet>
         <servlet-name>SignUpServlet</servlet-name>
-        <servlet-class>homies.goats.projet_jee.servlet.SignUpServlet</servlet-class>
+        <servlet-class>homies.goats.projet_jee.servlet.create.SignUpServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
@@ -20,7 +20,7 @@
 
     <servlet>
         <servlet-name>UpdateProfileServlet</servlet-name>
-        <servlet-class>homies.goats.projet_jee.servlet.UpdateProfileServlet</servlet-class>
+        <servlet-class>homies.goats.projet_jee.servlet.edit.EditProfileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UpdateProfileServlet</servlet-name>
@@ -65,11 +65,20 @@
 
     <servlet>
         <servlet-name>CreateUserServlet</servlet-name>
-        <servlet-class>homies.goats.projet_jee.servlet.CreateUserServlet</servlet-class>
+        <servlet-class>homies.goats.projet_jee.servlet.create.CreateUserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CreateUserServlet</servlet-name>
         <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DetailServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.DetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DetailServlet</servlet-name>
+        <url-pattern>/detail</url-pattern>
     </servlet-mapping>
 
     <filter>

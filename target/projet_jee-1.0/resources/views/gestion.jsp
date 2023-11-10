@@ -42,6 +42,7 @@
     </div>
 
     <div class="buttons">
+      <input type="submit" value="Display Archived User" onclick="openPopupCreateUser()" class="submit buttonFilter">
       <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
       <input type="submit" value="Tutor" class="submit buttonFilter">
       <input type="submit" value="Apprentice" class="submit buttonFilter">
@@ -65,7 +66,7 @@
           <td>${user.lastname}</td>
           <td>${user.forename}</td>
           <td>${user.userType}</td>
-          <td><button class="submit" onclick="openPopupDetail()">Details</button></td>
+          <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/detail?userId=${user.userId}';">Details</button></td>
           <td><button class="submit" onclick="openPopupEdit()">Edit</button></td>
           <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/archive?userId=${user.userId}';">Archive</button></td>
         </tr>
