@@ -19,7 +19,7 @@
 
 <header>
     <div class="left">
-        <img src="${pageContext.request.contextPath}/resources/images/iron.png" alt="Logo du site">
+        <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="Logo du site">
         <button class="submit buttonHeader" onclick="location.href='${pageContext.request.contextPath}/gestion';"> Home </button>
     </div>
     <div class="right">&nbsp;&nbsp;
@@ -54,7 +54,7 @@
         </div>
 
         <input type="hidden" name="idApprentice" value="${apprentice.idApprentice}">
-        <input type="hidden" name="idUser" value="${apprentice.userID}">
+        <input type="hidden" name="idUser" value="${apprentice.userId}">
 
         <input class="submit updateButtonDetails" type="submit" value="Update / Create my company">
     </form>

@@ -19,7 +19,7 @@
 <header>
 
   <div class="left">
-    <img src="${pageContext.request.contextPath}/resources/images/iron.png" alt="Logo du site">
+    <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="Logo du site">
     <h1 class="white">Hello ${authenticatedUser.forename} ${authenticatedUser.lastname}</h1>
   </div>
   <div class="right">
