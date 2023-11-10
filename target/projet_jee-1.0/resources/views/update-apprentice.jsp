@@ -33,33 +33,30 @@
     </div>
 </header>
 
+    <div class="update-apprentice">
+        <h1 class="details-title">Update Apprentice : user "${user.forename} ${user.lastname}"</h1>
+        <form action="update-apprentice" method="post">
 
-<div class="update-apprentice">
-    <h1 class="details-title">Update Apprentice : user "${user.forename} ${user.lastname}"</h1>
-    <form action="update-apprentice" method="post">
+            <div class="width flex">
+                <label class="bold" for="academicYear">Academic Year :</label>
+                <input class="fillInput" type="text" id="academicYear" name="academicYear" placeholder="Academic Year" value="${apprentice.academicYear}">
+            </div>
 
-        <div class="width flex">
-            <label class="bold" for="academicYear">Academic Year :</label>
-            <input class="fillInput" type="text" id="academicYear" name="academicYear" placeholder="Academic Year" value="${apprentice.academicYear}">
-        </div>
+            <div class="width flex">
+                <label class="bold" for="program">Program :</label>
+                <input class="fillInput" type="text" id="program" name="program" placeholder="Program" value="${apprentice.program}">
+            </div>
 
-        <div class="width flex">
-            <label class="bold" for="program">Program :</label>
-            <input class="fillInput" type="text" id="program" name="program" placeholder="Program" value="${apprentice.program}">
-        </div>
+            <div class="width flex">
+                <label class="bold" for="major">Major :</label>
+                <input class="fillInput" type="text" id="major" name="major" placeholder="Major" value="${apprentice.major}">
+            </div>
 
-        <div class="width flex">
-            <label class="bold" for="major">Major :</label>
-            <input class="fillInput" type="text" id="major" name="major" placeholder="Major" value="${apprentice.major}">
-        </div>
+            <input type="hidden" name="idApprentice" value="${apprentice.idApprentice}">
+            <input type="hidden" name="idUser" value="${apprentice.userId}">
 
-        <input type="hidden" name="idApprentice" value="${apprentice.idApprentice}">
-        <input type="hidden" name="idUser" value="${apprentice.userId}">
-
-        <input class="submit updateButtonDetails" type="submit" value="Update / Create my company">
-    </form>
-</div>
-
-
+            <input class="submit updateButtonDetails" type="submit" value="Update / Create my company">
+        </form>
+    </div>
 </body>
 </html>

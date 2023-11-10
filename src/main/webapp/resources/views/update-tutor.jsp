@@ -29,26 +29,28 @@
 
 
 <div class="update-apprentice">
-    <h1 class="details-title">Update Apprentice : user "${user.forename} ${user.lastname}"</h1>
-    <form action="update-apprentice" method="post">
+    <h1 class="details-title">Update Tutor : user "${user.forename} ${user.lastname}"</h1>
+    <form action="update-tutor" method="post">
 
-        <div class="width flex">
-            <label class="bold" for="academicYear">Academic Year :</label>
-            <input class="fillInput" type="text" id="academicYear" name="academicYear" placeholder="Academic Year" value="${apprentice.academicYear}">
-        </div>
+        <label for="apprenticeList">Apprentices Tutored</label>
+        <select id="apprenticeList" name="apprenticeList" multiple="multiple" size="5">
+            <c:forEach var="apprentice" items="${allApprentices}">
+                <!-- Met une couleur différente si apprentice.idTutor == tutor.idTutor-->
+                <!-- PREMIER CAS : Bleu, ou couleur qui tape à l'oeil-->
+                <c:if test="${apprentice.idTutor == tutor.idTutor}">
+                    <option class="A" value="${apprentice.userId}">${apprentice.lastname} ${apprentice.forename}</option>
+                </c:if>
 
-        <div class="width flex">
-            <label class="bold" for="program">Program :</label>
-            <input class="fillInput" type="text" id="program" name="program" placeholder="Program" value="${apprentice.program}">
-        </div>
+                <!-- DEUXIEME CAS : Gris bien banal sa mère-->
+                <c:if test="${apprentice.idTutor != tutor.idTutor}">
+                    <option class="B" value="${apprentice.userId}">${apprentice.lastname} ${apprentice.forename}</option>
+                </c:if>
+            </c:forEach>
+        </select>
 
-        <div class="width flex">
-            <label class="bold" for="major">Major :</label>
-            <input class="fillInput" type="text" id="major" name="major" placeholder="Major" value="${apprentice.major}">
-        </div>
 
-        <input type="hidden" name="idApprentice" value="${apprentice.idApprentice}">
-        <input type="hidden" name="idUser" value="${apprentice.userId}">
+        <input type="hidden" name="idApprentice" value="${tutor.idTutor}">
+        <input type="hidden" name="idUser" value="${tutor.userId}">
 
         <input class="submit updateButtonDetails" type="submit" value="Update / Create my company">
     </form>

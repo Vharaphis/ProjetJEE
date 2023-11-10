@@ -16,6 +16,7 @@ public enum SQLQueries {
     GET_APPRENTICE_BY_USER_ID("SELECT a FROM ApprenticeEntity a WHERE a.userId = :userId"),
     GET_APPRENTICE_BY_ID("SELECT a FROM ApprenticeEntity a WHERE a.idApprentice = :idApprentice"),
     GET_TUTOR_BY_USER_ID("SELECT t FROM TutorEntity t WHERE t.userId = :userId"),
+    GET_TUTOR_BY_TUTOR_ID("SELECT t FROM TutorEntity t WHERE t.idTutor = :idTutor"),
     GET_COMPANY_BY_ID("SELECT c FROM CompanyEntity c WHERE c.idCompany = :idCompany"),
     GET_ALL_COMPANIES("SELECT c FROM CompanyEntity c"),
     GET_ALL_APPRENTICES_OF_TUTOR("SELECT u FROM UserEntity u INNER JOIN ApprenticeEntity a ON a.userId = u.userId WHERE a.idTutor = :idTutor");

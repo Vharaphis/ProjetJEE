@@ -40,4 +40,14 @@ public class TutorSessionBean {
         }
     }
 
+    public TutorEntity getTutorByTutorId(int id){
+        try {
+            TypedQuery<TutorEntity> query = entityManager.createQuery(SQLQueries.GET_TUTOR_BY_TUTOR_ID.getQueryString(), TutorEntity.class);
+            query.setParameter("idTutor", id);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
 }

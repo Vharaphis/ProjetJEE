@@ -55,6 +55,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>UpdateTutorServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.update.UpdateTutorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateTutorServlet</servlet-name>
+        <url-pattern>/update-tutor</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>WelcomeServlet</servlet-name>
         <servlet-class>homies.goats.projet_jee.servlet.WelcomeServlet</servlet-class>
     </servlet>

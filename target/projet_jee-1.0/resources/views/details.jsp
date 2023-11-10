@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
     <link href="${pageContext.request.contextPath}/resources/styles/header.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/styles/gestion.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/styles/details.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/resources/styles/common.css" rel="stylesheet" type="text/css">
@@ -56,6 +57,9 @@
             <span class="bold">Phone Number</span>
             <span>${user.phone}</span>
         </div>
+        <c:if test="${associatedTutor != null}">
+            <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-tutor?idTutor=${associatedTutor.idTutor}';">Update Tutor's Information</button>
+        </c:if>
     </div>
 
     <c:if test="${associatedApprentice != null}">
@@ -77,30 +81,32 @@
             <div class="half-width flex">
                 <span class="bold">Is Archived</span>
                 <span>
-                        <c:choose>
-                            <c:when test="${associatedApprentice.isArchived}">True</c:when>
-                            <c:otherwise>False</c:otherwise>
-                        </c:choose>
-                    </span>
-                </div>
-                <div class="half-width flex">
-                    <span class="bold">Company</span>
-                    <span>${apprenticeCompany.socialReason}</span>
-                    <span>${apprenticeCompany.companyAddress}</span>
-                    <span>${apprenticeCompany.companyInfos}</span>
-                </div>
-                <div class="half-width flex">
-                    <span class="bold">Tutor</span>
-                    <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
-                </div>
+                    <c:choose>
+                        <c:when test="${associatedApprentice.isArchived}">True</c:when>
+                        <c:otherwise>False</c:otherwise>
+                    </c:choose>
+                </span>
             </div>
+            <div class="half-width flex">
+                <span class="bold">Company</span>
+                <span>${apprenticeCompany.socialReason}</span>
+                <span>${apprenticeCompany.companyAddress}</span>
+                <span>${apprenticeCompany.companyInfos}</span>
+            </div>
+            <div class="half-width flex">
+                <span class="bold">Tutor</span>
+                <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
+            </div>
+        </div>
+    </c:if>
 
-
+    <c:if test="${associatedTutor != null}">
         <div class="details-apprenticeInformation">
             <h1 class="details-title">Tutor's Apprentices</h1>
             <!-- ON ARRIVE EN DESSOUS UNIQUEMENT QUUAND ON DISPLAY LES INFOS DU TUTEUR : TU ME FAIS LE CSS WALLAH-->
-            <c:if test="${associatedTutor != null}">
-                <c:if test="${not empty tutorApprentices}">
+
+            <c:if test="${not empty tutorApprentices}">
+                <div class="tablo">
                     <table>
                         <thead>
                         <tr>
@@ -120,20 +126,14 @@
                             </tr>
                         </c:forEach>
                     </table>
-                </c:if>
-                <c:if test="${empty tutorApprentices}">
-
-                </c:if>
-                <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-tutor?idTutor=${associatedTutor.idTutor}';">Update Tutor's Information</button>
+                </div>
             </c:if>
+            <c:if test="${empty tutorApprentices}">
 
+            </c:if>
         </div>
-
-        </div>
-        <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
     </c:if>
-
-
+    </div>
 
     <c:if test="${associatedApprentice == null && associatedTutor == null}">
         <h3>NO DATA ABOUT THE USER TYPE. THIS IS A PROBLEM.</h3>
