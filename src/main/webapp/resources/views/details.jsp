@@ -32,7 +32,14 @@
 
 <div class="details">
     <div class="details-apprenticeInformation">
-        <h1 class="details-title">Apprentice Informations</h1>
+        <h1 class="details-title">
+            <c:if test="${associatedTutor != null}">
+                Tutor Information
+            </c:if>
+            <c:if test="${associatedTutor == null}">
+                Apprentice Information
+            </c:if>
+        </h1>
 
         <div class="half-width flex">
             <span class="bold">Lastname</span>
@@ -56,44 +63,47 @@
     <hr />
 
     <c:if test="${associatedApprentice != null}">
-    <div class="details-apprenticeInformation">
-        <h1 class="details-title">Company And School Informations</h1>
+        <div class="details-apprenticeInformation">
+            <h1 class="details-title">Company And School Informations</h1>
 
-        <div class="half-width flex">
-            <span class="bold">Program</span>
-            <span>${associatedApprentice.program}</span>
-        </div>
-        <div class="half-width flex">
-            <span class="bold">Academic Year</span>
-            <span>${associatedApprentice.academicYear}</span>
-        </div>
-        <div class="half-width flex">
-            <span class="bold">Major</span>
-            <span>${associatedApprentice.major}</span>
-        </div>
-        <div class="half-width flex">
-            <span class="bold">Is Archived</span>
-            <span>
-                    <c:choose>
-                        <c:when test="${associatedApprentice.isArchived}">True</c:when>
-                        <c:otherwise>False</c:otherwise>
-                    </c:choose>
-                </span>
+            <div class="half-width flex">
+                <span class="bold">Program</span>
+                <span>${associatedApprentice.program}</span>
             </div>
-        </div>
-        <div class="half-width flex">
-            <span class="bold">Company</span>
-            <span>${apprenticeCompany.socialReason}</span>
-            <span>${apprenticeCompany.companyAddress}</span>
-            <span>${apprenticeCompany.companyInfos}</span>
-        </div>
-        <div class="half-width flex">
-            <span class="bold">Tutor</span>
-            <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
-        </div>
+            <div class="half-width flex">
+                <span class="bold">Academic Year</span>
+                <span>${associatedApprentice.academicYear}</span>
+            </div>
+            <div class="half-width flex">
+                <span class="bold">Major</span>
+                <span>${associatedApprentice.major}</span>
+            </div>
+            <div class="half-width flex">
+                <span class="bold">Is Archived</span>
+                <span>
+                        <c:choose>
+                            <c:when test="${associatedApprentice.isArchived}">True</c:when>
+                            <c:otherwise>False</c:otherwise>
+                        </c:choose>
+                    </span>
+                </div>
+            </div>
+            <div class="half-width flex">
+                <span class="bold">Company</span>
+                <span>${apprenticeCompany.socialReason}</span>
+                <span>${apprenticeCompany.companyAddress}</span>
+                <span>${apprenticeCompany.companyInfos}</span>
+            </div>
+            <div class="half-width flex">
+                <span class="bold">Tutor</span>
+                <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
+            </div>
 
-    </div>
+        </div>
+        <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
+    </c:if>
 
+    <!-- ON ARRIVE EN DESSOUS UNIQUEMENT QUUAND ON DISPLAY LES INFOS DU TUTEUR : TU ME FAIS LE CSS WALLAH-->
     <c:if test="${associatedTutor != null}">
         <c:if test="${not empty tutorApprentices}">
             <table>
@@ -105,6 +115,7 @@
                     <th></th>
                 </tr>
                 </thead>
+                <!-- TUTOR APPRENTICES CONTIENT LA LISTE D'APPRENTI D'UN TUTEUR-->
                 <c:forEach var="apprentice" items="${tutorApprentices}">
                     <tr>
                         <td>${apprentice.lastname}</td>
@@ -118,18 +129,12 @@
         <c:if test="${empty tutorApprentices}">
 
         </c:if>
+        <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-tutor?idTutor=${associatedTutor.idTutor}';">Update Tutor's Information</button>
     </c:if>
 
     <c:if test="${associatedApprentice == null && associatedTutor == null}">
         <h3>NO DATA ABOUT THE USER TYPE. THIS IS A PROBLEM.</h3>
     </c:if>
-
-
-</div>
-
-<button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
-
-
 
 
 </body>
