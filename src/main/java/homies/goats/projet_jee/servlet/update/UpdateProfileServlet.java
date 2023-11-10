@@ -27,32 +27,37 @@ public class UpdateProfileServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession(false);
+        if (request.getParameter("update") != null) {
+            HttpSession session = request.getSession(false);
 
-        if(session != null) {
-            UserEntity authenticatedUser = (UserEntity) session.getAttribute("authenticatedUser");
-            String name = request.getParameter("lastname");
-            String forename = request.getParameter("forename");
-            String email = request.getParameter("email");
-            String phone = request.getParameter("phone");
-            String password = request.getParameter("newPassword");
-            String confirmPassword = request.getParameter("confirmPassword");
+            if(session != null) {
+                UserEntity authenticatedUser = (UserEntity) session.getAttribute("authenticatedUser");
+                String name = request.getParameter("lastname");
+                String forename = request.getParameter("forename");
+                String email = request.getParameter("email");
+                String phone = request.getParameter("phone");
+                String password = request.getParameter("newPassword");
+                String confirmPassword = request.getParameter("confirmPassword");
 
-            UserEntity modifiedUser = new UserEntity();
-            modifiedUser.setLastname(name);
-            modifiedUser.setForename(forename);
-            modifiedUser.setEmail(email);
-            modifiedUser.setPhone(phone);
+                UserEntity modifiedUser = new UserEntity();
+                modifiedUser.setLastname(name);
+                modifiedUser.setForename(forename);
+                modifiedUser.setEmail(email);
+                modifiedUser.setPhone(phone);
 
-            //returns true if it fails
-            boolean fail = userSessionBean.updateUser(authenticatedUser, modifiedUser, password, confirmPassword);
-            if(fail){
-                response.sendRedirect("update-profile?failed=true");
+                //returns true if it fails
+                boolean fail = userSessionBean.updateUser(authenticatedUser, modifiedUser, password, confirmPassword);
+                if(fail){
+                    response.sendRedirect("update-profile?failed=true");
+                } else {
+                    response.sendRedirect("gestion");
+                }
             } else {
-                response.sendRedirect("gestion");
+                System.err.println("Session doesn't exist, user not logged in.");
             }
-        } else {
-            System.err.println("Session doesn't exist, user not logged in.");
+        }
+        else if (request.getParameter("return") != null) {
+            response.sendRedirect("gestion");
         }
     }
 }

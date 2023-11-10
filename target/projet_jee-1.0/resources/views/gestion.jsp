@@ -53,10 +53,12 @@
       <input type="text" placeholder="Filter">
     </div>
 
-    <div class="buttons">
-      <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
-      <input type="submit" value="Create Company" onclick="openPopupCreateCompany()" class="submit buttonFilter">
-    </div>
+    <c:if test="${authenticatedUser.userType == 'Tutor'}">
+      <div class="buttons">
+        <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
+        <input type="submit" value="Create Company" onclick="openPopupCreateCompany()" class="submit buttonFilter">
+      </div>
+    </c:if>
   </div>
 
 
@@ -201,35 +203,6 @@
   </div>
 </div>
 
-
-<div id="popupCreateCompany" class="popup">
-  <div class="popup-content">
-    <span class="close" id="close-popup-create-company" onclick="closePopupCreateCompany()">&times;</span>
-
-    <h1>Create a new user</h1>
-    <form method="POST" action="create-company">
-      <div class="input-row">
-        <div class="half-width">
-          <label for="socialReason">Social Reason</label>
-          <input type="text" id="socialReason" name="socialReason" class="fillInput" required>
-        </div>
-        <div class="half-width">
-          <label for="companyAddress">Company Address</label>
-          <input type="text" id="companyAddress" name="companyAddress" class="fillInput" required>
-        </div>
-      </div>
-
-      <div class="input-row">
-        <div class="half-width">
-          <label for="companyInfos">Company Information</label>
-          <input type="text" id="companyInfos" name="companyInfos" class="fillInput" required>
-        </div>
-      </div>
-
-      <input type="submit" value="Create" class="submit">
-    </form>
-  </div>
-</div>
 
 <div id="popupCreateUser" class="popup">
   <div class="popup-content">
