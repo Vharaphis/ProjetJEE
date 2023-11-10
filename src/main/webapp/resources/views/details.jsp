@@ -14,7 +14,6 @@
 <body>
 
 <header>
-
     <div class="left">
         <img src="${pageContext.request.contextPath}/resources/images/iron.png" alt="Logo du site">
         <button class="submit buttonHeader" onclick="location.href='${pageContext.request.contextPath}/gestion';"> < Back </button>
@@ -32,7 +31,15 @@
 
 
 <div class="details">
+    <div class="details-apprenticeInformation">
 
+    </div>
+    <div class="details-apprenticeInformation">
+
+    </div>
+    <div class="details-apprenticeInformation">
+
+    </div>
 
     <div class="input-row">
         <div class="half-width flex">

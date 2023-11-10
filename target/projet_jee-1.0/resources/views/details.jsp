@@ -14,7 +14,6 @@
 <body>
 
 <header>
-
     <div class="left">
         <img src="${pageContext.request.contextPath}/resources/images/iron.png" alt="Logo du site">
         <button class="submit buttonHeader" onclick="location.href='${pageContext.request.contextPath}/gestion';"> < Back </button>
