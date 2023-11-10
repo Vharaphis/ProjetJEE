@@ -37,3 +37,18 @@ function openPopupCreateCompany() {
     var popup = document.getElementById("popupCreateCompany");
     popup.style.display = "flex";
 }
+
+function filterTabWithSearchInput()  {
+    var filterInput = document.getElementById('filterInput');
+    var userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+
+    filterInput.addEventListener('input', function () {
+        var searchText = filterInput.value.toLowerCase();
+
+        Array.from(userTable.getElementsByTagName('tr')).forEach(function (row) {
+            var text = row.innerText.toLowerCase();
+            var isVisible = text.includes(searchText);
+            row.style.display = isVisible ? '' : 'none';
+        });
+    });
+}

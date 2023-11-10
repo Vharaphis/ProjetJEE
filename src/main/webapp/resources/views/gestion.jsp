@@ -50,7 +50,7 @@
 
     <div class="filter-input-container">
       <i class="fas fa-search"></i> <!-- Magnifying glass icon (Font Awesome) -->
-      <input type="text" placeholder="Filter">
+      <input type="text" id="filterInput" placeholder="Filter" oninput="filterTabWithSearchInput()">
     </div>
 
     <c:if test="${authenticatedUser.userType == 'Tutor'}">
@@ -65,7 +65,7 @@
   <div class="tablo">
     <c:if test="${not company}">
       <c:if test="${not empty LIST}">
-        <table>
+        <table id="userTable">
           <thead>
             <tr>
               <th>Name</th>
