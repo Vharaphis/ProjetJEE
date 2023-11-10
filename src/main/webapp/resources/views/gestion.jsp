@@ -53,10 +53,12 @@
       <input type="text" placeholder="Filter">
     </div>
 
-    <div class="buttons">
-      <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
-      <input type="submit" value="Create Company" onclick="openPopupCreateUser()" class="submit buttonFilter">
-    </div>
+    <c:if test="${authenticatedUser.userType == 'Tutor'}">
+      <div class="buttons">
+        <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
+        <input type="submit" value="Create Company" onclick="openPopupCreateUser()" class="submit buttonFilter">
+      </div>
+    </c:if>
   </div>
 
 

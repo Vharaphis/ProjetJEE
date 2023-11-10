@@ -46,7 +46,8 @@
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password">
             </div>
 
-            <input type="submit" value="Update my user profile">
+            <input type="submit" name="update" value="Update my user profile">
+            <input type="submit" name="return" value="Return back">
         </form>
         <c:if test="${error}">
             <p class="footer" style="color: red">No fields other than 'passwords' should be blank. Passwords should be equal IF they are set.</p>
