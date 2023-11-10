@@ -75,9 +75,12 @@ public class UserSessionBean {
         return false;
     }
 
-    public List<UserEntity> getTutorApprentices(int tutorId){
+    public List<UserEntity> getTutorApprentices(int idTutor){
         try {
-            return entityManager.createQuery(SQLQueries.GET_ALL_APPRENTICES_OF_TUTOR.getQueryString(), UserEntity.class).getResultList();
+            //return entityManager.createQuery(SQLQueries.GET_ALL_APPRENTICES_OF_TUTOR.getQueryString(), UserEntity.class).getResultList();
+            TypedQuery<UserEntity> query = entityManager.createQuery(SQLQueries.GET_ALL_APPRENTICES_OF_TUTOR.getQueryString(), UserEntity.class);
+            query.setParameter("idTutor", idTutor);
+            return query.getResultList();
         } catch (NoResultException e){
             return null;
         }
@@ -97,6 +100,16 @@ public class UserSessionBean {
         try {
             TypedQuery<UserEntity> query = entityManager.createQuery(SQLQueries.GET_USER_BY_ID.getQueryString(), UserEntity.class);
             query.setParameter("userId", userId);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public UserEntity getUserByIdTutor(int idTutor){
+        try {
+            TypedQuery<UserEntity> query = entityManager.createQuery(SQLQueries.GET_USER_BY_ID_TUTOR.getQueryString(), UserEntity.class);
+            query.setParameter("idTutor", idTutor);
             return query.getSingleResult();
         } catch (NoResultException e) {
             return null;

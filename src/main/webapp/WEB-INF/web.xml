@@ -19,6 +19,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.authent.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>UpdateProfileServlet</servlet-name>
         <servlet-class>homies.goats.projet_jee.servlet.update.UpdateProfileServlet</servlet-class>
     </servlet>
@@ -46,15 +55,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>homies.goats.projet_jee.servlet.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>WelcomeServlet</servlet-name>
         <servlet-class>homies.goats.projet_jee.servlet.WelcomeServlet</servlet-class>
     </servlet>
@@ -65,7 +65,7 @@
     
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>homies.goats.projet_jee.servlet.LogoutServlet</servlet-class>
+        <servlet-class>homies.goats.projet_jee.servlet.authent.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
@@ -91,11 +91,11 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>DetailServlet</servlet-name>
+        <servlet-name>UserDetailServlet</servlet-name>
         <servlet-class>homies.goats.projet_jee.servlet.UserDetailServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DetailServlet</servlet-name>
+        <servlet-name>UserDetailServlet</servlet-name>
         <url-pattern>/detail</url-pattern>
     </servlet-mapping>
 
