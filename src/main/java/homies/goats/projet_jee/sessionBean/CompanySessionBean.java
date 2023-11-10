@@ -7,6 +7,8 @@ import homies.goats.projet_jee.model.UserEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Stateless
 public class CompanySessionBean {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("projet_jee");
@@ -21,6 +23,14 @@ public class CompanySessionBean {
         company.setCompanyInfos(companyInfos);
         entityManager.persist(company);
         entityManager.getTransaction().commit();
+    }
+
+    public List<CompanyEntity> getAllCompanies(){
+        try {
+            return entityManager.createQuery(SQLQueries.GET_ALL_COMPANIES.getQueryString(), CompanyEntity.class).getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     public CompanyEntity getCompanyById(int idCompany){

@@ -7,6 +7,8 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Stateless
 public class TutorSessionBean {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("projet_jee");
@@ -18,6 +20,14 @@ public class TutorSessionBean {
         tutor.setUserId(userId);
         entityManager.persist(tutor);
         entityManager.getTransaction().commit();
+    }
+
+    public  List<TutorEntity> getAllTutors(){
+        try {
+            return entityManager.createQuery(SQLQueries.GET_ALL_TUTORS.getQueryString(), TutorEntity.class).getResultList();
+        } catch (NoResultException e){
+            return null;
+        }
     }
 
     public TutorEntity getTutorByUserId(int id){

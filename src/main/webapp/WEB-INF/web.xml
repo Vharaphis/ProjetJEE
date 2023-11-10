@@ -20,11 +20,20 @@
 
     <servlet>
         <servlet-name>UpdateProfileServlet</servlet-name>
-        <servlet-class>homies.goats.projet_jee.servlet.edit.EditProfileServlet</servlet-class>
+        <servlet-class>homies.goats.projet_jee.servlet.edit.UpdateProfileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UpdateProfileServlet</servlet-name>
         <url-pattern>/update-profile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditCompanyServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.edit.UpdateCompanyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditCompanyServlet</servlet-name>
+        <url-pattern>/update-company</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -74,7 +83,7 @@
     
     <servlet>
         <servlet-name>DetailServlet</servlet-name>
-        <servlet-class>homies.goats.projet_jee.servlet.DetailServlet</servlet-class>
+        <servlet-class>homies.goats.projet_jee.servlet.UserDetailServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DetailServlet</servlet-name>

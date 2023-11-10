@@ -104,9 +104,33 @@ public class UserSessionBean {
         }
     }
 
+    public List<UserEntity> getAllApprenticesNotArchived(){
+        try {
+            return entityManager.createQuery(SQLQueries.GET_ALL_APPRENTICES_NOT_ARCHIVED.getQueryString(), UserEntity.class).getResultList();
+        } catch (NoResultException e){
+            return null;
+        }
+    }
+
+    public List<UserEntity> getAllApprenticesArchived(){
+        try {
+            return entityManager.createQuery(SQLQueries.GET_ALL_APPRENTICES_ARCHIVED.getQueryString(), UserEntity.class).getResultList();
+        } catch (NoResultException e){
+            return null;
+        }
+    }
+
     public List<UserEntity> getAllUsers(){
         try {
             return entityManager.createQuery(SQLQueries.GET_ALL_USERS.getQueryString(), UserEntity.class).getResultList();
+        } catch (NoResultException e){
+            return null;
+        }
+    }
+
+    public List<UserEntity> getAllTutors(){
+        try {
+            return entityManager.createQuery(SQLQueries.GET_ALL_TUTORS.getQueryString(), UserEntity.class).getResultList();
         } catch (NoResultException e){
             return null;
         }

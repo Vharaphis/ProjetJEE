@@ -17,64 +17,104 @@
 </head>
 <body>
 <header>
+
   <div class="left">
     <img src="${pageContext.request.contextPath}/resources/images/iron.png" alt="Logo du site">
-    <h1>Bonjour ${authenticatedUser.forename} ${authenticatedUser.lastname}</h1>
+    <h1>Hello ${authenticatedUser.forename} ${authenticatedUser.lastname}</h1>
   </div>
   <div class="right">
     <div class="user-dropdown">
-      <img src="${pageContext.request.contextPath}/resources/images/lol.png" alt="Icône utilisateur">
+      <button class="submit">&nbsp;Lists&nbsp;</button>
+      <div class="dropdown-content">
+        <a href="${pageContext.request.contextPath}/gestion?type=tutor">List Tutors</a>
+        <a href="${pageContext.request.contextPath}/gestion">List Current Apprentices</a>
+        <a href="${pageContext.request.contextPath}/gestion?type=apprentice_archived">List Archived Apprentices</a>
+        <a href="${pageContext.request.contextPath}/gestion?type=all">List All Users</a>
+        <a href="${pageContext.request.contextPath}/gestion?type=company">List Companies</a>
+      </div>
+    </div>
+    &nbsp;&nbsp;
+    <div class="user-dropdown">
+      <img src="${pageContext.request.contextPath}/resources/images/lol.png" alt="User icon">
       <div class="dropdown-content">
         <a href="${pageContext.request.contextPath}/update-profile">Update profile</a>
-        <a href="${pageContext.request.contextPath}/logout">Déconnexion</a>
+        <a href="${pageContext.request.contextPath}/logout">Disconnect</a>
       </div>
     </div>
   </div>
 </header>
 
-<h1>List of Users</h1>
+<h1>List of ${LIST_TYPE}</h1>
 <div class="researchTable">
   <div class="inputs">
 
     <div class="filter-input-container">
-      <i class="fas fa-search"></i> <!-- Icône de loupe (Font Awesome) -->
-      <input type="text" placeholder="Filtrer">
+      <i class="fas fa-search"></i> <!-- Magnifying glass icon (Font Awesome) -->
+      <input type="text" placeholder="Filter">
     </div>
 
     <div class="buttons">
-      <input type="submit" value="Display Archived User" onclick="openPopupCreateUser()" class="submit buttonFilter">
       <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
-      <input type="submit" value="Tutor" class="submit buttonFilter">
-      <input type="submit" value="Apprentice" class="submit buttonFilter">
+      <input type="submit" value="Create Company" onclick="openPopupCreateUser()" class="submit buttonFilter">
     </div>
   </div>
 
-  <c:if test="${not empty USER_LIST}">
+
   <div class="tablo">
-    <table>
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Forename</th>
-        <th>Role</th>
-        <th></th>
-      </tr>
-      </thead>
+    <c:if test="${not company}">
+      <c:if test="${not empty LIST}">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Forename</th>
+              <th>Role</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
 
-      <c:forEach var="user" items="${USER_LIST}">
-        <tr>
-          <td>${user.lastname}</td>
-          <td>${user.forename}</td>
-          <td>${user.userType}</td>
-          <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/detail?userId=${user.userId}';">Details</button></td>
-          <td><button class="submit" onclick="openPopupEdit()">Edit</button></td>
-          <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/archive?userId=${user.userId}';">Archive</button></td>
-        </tr>
-      </c:forEach>
-
-    </table>
+          <c:forEach var="user" items="${LIST}">
+            <tr>
+              <td>${user.lastname}</td>
+              <td>${user.forename}</td>
+              <td>${user.userType}</td>
+              <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/detail?userId=${user.userId}';">Details</button></td>
+              <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/archive?userId=${user.userId}';">Archive</button></td>
+            </tr>
+          </c:forEach>
+        </table>
+      </c:if>
     </c:if>
-    <c:if test="${empty USER_LIST}">
+
+    <c:if test="${company}">
+      <c:if test="${not empty LIST}">
+        <table>
+          <thead>
+          <tr>
+            <th>Social Reason</th>
+            <th>Company Address</th>
+            <th>Company Information</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <c:forEach var="company" items="${LIST}">
+            <tr>
+              <td>${company.socialReason}</td>
+              <td>${company.companyAddress}</td>
+              <td>${company.companyInfos}</td>
+              <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-company?companyId=${company.userId}';">Details</button></td>
+            </tr>
+          </c:forEach>
+        </table>
+      </c:if>
+    </c:if>
+
+
+
+    <c:if test="${empty LIST}">
       <p>La liste est vide. Ajoutez au moins un(e) apprenti(e)</p>
     </c:if>
   </div>
