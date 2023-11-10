@@ -19,6 +19,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import static homies.goats.projet_jee.utils.utils.getConvertedToIntIdOrNull;
+
 public class UserDetailServlet extends HttpServlet {
 
     @EJB
@@ -32,23 +34,11 @@ public class UserDetailServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         //TODO
-
-        String userId = request.getParameter("userId");
-
-        if(userId == null || userId.isBlank()){
+        Integer userId = getConvertedToIntIdOrNull(request.getParameter("userId"));
+        if(userId == null){
             response.sendRedirect("gestion");
-            return;
         }
-
-        int convertedUserId;
-        try {
-            convertedUserId = Integer.parseInt(userId);
-        } catch (NumberFormatException e) {
-            response.sendRedirect("gestion");
-            return;
-        }
-
-        UserEntity user = userSessionBean.getUserById(convertedUserId);
+        UserEntity user = userSessionBean.getUserById(userId);
         if(user == null){
             response.sendRedirect("gestion");
             return;

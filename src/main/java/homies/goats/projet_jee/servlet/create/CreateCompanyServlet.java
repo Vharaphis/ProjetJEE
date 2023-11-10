@@ -23,6 +23,6 @@ public class CreateCompanyServlet extends HttpServlet {
         }
 
         companySessionBean.createCompany(socialReason, companyAddress, companyInfos);
-        response.sendRedirect("gestion");
+        response.sendRedirect("gestion?type=company");
     }
 }

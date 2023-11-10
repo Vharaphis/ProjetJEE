@@ -15,14 +15,9 @@
     <div class="profile">
 
 
-        <h1>
-            <c:choose>
-                <c:when test="${company}">Update Company</c:when>
-                <c:otherwise>Create Company</c:otherwise>
-            </c:choose>
-        </h1>
+        <h1>Update Company</h1>
 
-        <form action="update-profile" method="post">
+        <form action="update-company" method="post">
 
             <div class="half-width flex">
                 <label for="socialReason">Social Reason :</label>
@@ -38,6 +33,8 @@
                 <label for="companyInfos">Company Infos :</label>
                 <input type="text" id="companyInfos" name="companyInfos" placeholder="companyInfos" value="${company.companyInfos}">
             </div>
+
+            <input type="hidden" name="idCompany" value="${company.idCompany}">
 
             <input type="submit" value="Update / Create my company">
         </form>

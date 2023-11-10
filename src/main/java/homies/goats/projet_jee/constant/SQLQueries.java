@@ -13,6 +13,7 @@ public enum SQLQueries {
     GET_USER_BY_EMAIL("SELECT u FROM UserEntity u WHERE u.email = :email"),
     GET_ALL_APPRENTICES("SELECT a FROM ApprenticeEntity a"),
     GET_APPRENTICE_BY_USER_ID("SELECT a FROM ApprenticeEntity a WHERE a.userId = :userId"),
+    GET_APPRENTICE_BY_ID("SELECT a FROM ApprenticeEntity a WHERE a.idApprentice = :idApprentice"),
     GET_TUTOR_BY_USER_ID("SELECT t FROM TutorEntity t WHERE t.userId = :userId"),
     GET_COMPANY_BY_ID("SELECT c FROM CompanyEntity c WHERE c.idCompany = :idCompany"),
     GET_ALL_COMPANIES("SELECT c FROM CompanyEntity c"),

@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
+    <link href="${pageContext.request.contextPath}/resources/styles/header.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/styles/gestion.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/styles/common.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/styles/popup.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
     <button class="submit" onclick="location.href='${pageContext.request.contextPath}/gestion';">Go back to main page...</button>
-
-    <!-- Mettre ça au propre, la logique principale y est -->
-    <span class="close" id="close-popup-edit" onclick="closePopupDetail()">&times;</span>
 
     <div class="input-row">
         <div class="half-width flex">
@@ -77,6 +77,7 @@
                 <span><a href="details?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
             </div>
         </div>
+        <button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
     </c:if>
 
     <c:if test="${associatedTutor != null}">

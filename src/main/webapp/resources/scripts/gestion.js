@@ -27,3 +27,13 @@ function openPopupCreateUser() {
     var popup = document.getElementById("popupCreateUser");
     popup.style.display = "flex";
 }
+
+function openPopupCreateCompany() {
+    var popup = document.getElementById("popupCreateCompany");
+    popup.style.display = "flex";
+}
+
+function closePopupCreateCompany() {
+    var popup = document.getElementById("popupCreateCompany");
+    popup.style.display = "none";
+}

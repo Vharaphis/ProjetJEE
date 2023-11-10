@@ -55,7 +55,7 @@
 
     <div class="buttons">
       <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
-      <input type="submit" value="Create Company" onclick="openPopupCreateUser()" class="submit buttonFilter">
+      <input type="submit" value="Create Company" onclick="openPopupCreateCompany()" class="submit buttonFilter">
     </div>
   </div>
 
@@ -105,7 +105,7 @@
               <td>${company.socialReason}</td>
               <td>${company.companyAddress}</td>
               <td>${company.companyInfos}</td>
-              <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-company?companyId=${company.userId}';">Details</button></td>
+              <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-company?companyId=${company.idCompany}';">Details</button></td>
             </tr>
           </c:forEach>
         </table>
@@ -201,6 +201,35 @@
   </div>
 </div>
 
+
+<div id="popupCreateCompany" class="popup">
+  <div class="popup-content">
+    <span class="close" id="close-popup-create-company" onclick="closePopupCreateCompany()">&times;</span>
+
+    <h1>Create a new user</h1>
+    <form method="POST" action="create-company">
+      <div class="input-row">
+        <div class="half-width">
+          <label for="socialReason">Social Reason</label>
+          <input type="text" id="socialReason" name="socialReason" class="fillInput" required>
+        </div>
+        <div class="half-width">
+          <label for="companyAddress">Company Address</label>
+          <input type="text" id="companyAddress" name="companyAddress" class="fillInput" required>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="half-width">
+          <label for="companyInfos">Company Information</label>
+          <input type="text" id="companyInfos" name="companyInfos" class="fillInput" required>
+        </div>
+      </div>
+
+      <input type="submit" value="Create" class="submit">
+    </form>
+  </div>
+</div>
 
 <div id="popupCreateUser" class="popup">
   <div class="popup-content">
