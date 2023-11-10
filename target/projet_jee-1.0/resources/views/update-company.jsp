@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit profile</title>
+    <link href="${pageContext.request.contextPath}/resources/styles/header.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/resources/styles/parameters.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/resources/styles/common.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/resources/scripts/update-profile.js"></script>
 </head>
 <body>
+
+
+
+
+
 <div class="container">
     <div class="profile">
 

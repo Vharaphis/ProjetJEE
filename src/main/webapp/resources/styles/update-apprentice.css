@@ -1,0 +1,33 @@
+.details-title{
+    background-color: #4285f4!important;
+    color: white!important;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.update-apprentice{
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.width {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.width input{
+    width: 15vw;
+}
+
+.updateButtonDetails {
+    margin: 3em auto;
+    display: block;
+    width: fit-content!important;
+}

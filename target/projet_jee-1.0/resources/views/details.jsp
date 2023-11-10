@@ -29,25 +29,28 @@
     </div>
 </header>
 
+
 <div class="details">
+
+
     <div class="input-row">
         <div class="half-width flex">
             <span class="bold">Lastname</span>
-            <span>${user.lastname}</span>
+            <span>${mainUser.lastname}</span>
         </div>
         <div class="half-width flex">
             <span class="bold">Forename</span>
-            <span>${user.forename}</span>
+            <span>${mainUser.forename}</span>
         </div>
     </div>
     <div class="input-row">
         <div class="half-width flex">
             <span class="bold">Email</span>
-            <span>${user.email}</span>
+            <span>${mainUser.email}</span>
         </div>
         <div class="half-width flex">
             <span class="bold">Phone Number</span>
-            <span>${user.phone}</span>
+            <span>${mainUser.phone}</span>
         </div>
     </div>
     <hr />
@@ -88,38 +91,24 @@
             </div>
             <div class="half-width flex">
                 <span class="bold">Tutor</span>
-                <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
+                <span><a href="details?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
             </div>
         </div>
         <button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
     </c:if>
 
     <c:if test="${associatedTutor != null}">
-        <c:if test="${not empty tutorApprentices}">
-            <table>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Forename</th>
-                    <th>Role</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <c:forEach var="apprentice" items="${tutorApprentices}">
-                    <tr>
-                        <td>${apprentice.lastname}</td>
-                        <td>${apprentice.forename}</td>
-                        <td>${apprentice.userType}</td>
-                        <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/detail?userId=${apprentice.userId}';">Details</button></td>
-                        <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/archive?userId=${apprentice.userId}';">Archive</button></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </c:if>
-        <c:if test="${empty tutorApprentices}">
-
-        </c:if>
+        <h3 class="popup-title">Tutor</h3>
+        <div class="input-row">
+            <div class="half-width flex">
+                <span class="bold">Address</span>
+                <span>4 rue des Chasseurs</span>
+            </div>
+            <div class="half-width flex">
+                <span class="bold">Infos</span>
+                <span>A la cambrousse</span>
+            </div>
+        </div>
     </c:if>
 
     <c:if test="${associatedApprentice == null && associatedTutor == null}">
@@ -128,6 +117,12 @@
 
 
 </div>
+
+
+
+
+
+
 
 </body>
 </html>

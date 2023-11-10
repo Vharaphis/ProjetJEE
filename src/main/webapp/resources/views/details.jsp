@@ -29,8 +29,11 @@
     </div>
 </header>
 
+
 <div class="details">
-    <div class="input-row">
+    <div class="details-apprenticeInformation">
+        <h1 class="details-title">Apprentice Informations</h1>
+
         <div class="half-width flex">
             <span class="bold">Lastname</span>
             <span>${user.lastname}</span>
@@ -53,25 +56,24 @@
     <hr />
 
     <c:if test="${associatedApprentice != null}">
-        <h3 class="popup-title">Apprentice</h3>
-        <div class="input-row">
-            <div class="half-width flex">
-                <span class="bold">Program</span>
-                <span>${associatedApprentice.program}</span>
-            </div>
-            <div class="half-width flex">
-                <span class="bold">Academic Year</span>
-                <span>${associatedApprentice.academicYear}</span>
-            </div>
+    <div class="details-apprenticeInformation">
+        <h1 class="details-title">Company And School Informations</h1>
+
+        <div class="half-width flex">
+            <span class="bold">Program</span>
+            <span>${associatedApprentice.program}</span>
         </div>
-        <div class="input-row">
-            <div class="half-width flex">
-                <span class="bold">Major</span>
-                <span>${associatedApprentice.major}</span>
-            </div>
-            <div class="half-width flex">
-                <span class="bold">Is Archived</span>
-                <span>
+        <div class="half-width flex">
+            <span class="bold">Academic Year</span>
+            <span>${associatedApprentice.academicYear}</span>
+        </div>
+        <div class="half-width flex">
+            <span class="bold">Major</span>
+            <span>${associatedApprentice.major}</span>
+        </div>
+        <div class="half-width flex">
+            <span class="bold">Is Archived</span>
+            <span>
                     <c:choose>
                         <c:when test="${associatedApprentice.isArchived}">True</c:when>
                         <c:otherwise>False</c:otherwise>
@@ -79,20 +81,18 @@
                 </span>
             </div>
         </div>
-        <div class="input-row">
-            <div class="half-width flex">
-                <span class="bold">Company</span>
-                <span>${apprenticeCompany.socialReason}</span>
-                <span>${apprenticeCompany.companyAddress}</span>
-                <span>${apprenticeCompany.companyInfos}</span>
-            </div>
-            <div class="half-width flex">
-                <span class="bold">Tutor</span>
-                <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
-            </div>
+        <div class="half-width flex">
+            <span class="bold">Company</span>
+            <span>${apprenticeCompany.socialReason}</span>
+            <span>${apprenticeCompany.companyAddress}</span>
+            <span>${apprenticeCompany.companyInfos}</span>
         </div>
-        <button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
-    </c:if>
+        <div class="half-width flex">
+            <span class="bold">Tutor</span>
+            <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
+        </div>
+
+    </div>
 
     <c:if test="${associatedTutor != null}">
         <c:if test="${not empty tutorApprentices}">
@@ -126,6 +126,11 @@
 
 
 </div>
+
+<button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
+
+
+
 
 </body>
 </html>
