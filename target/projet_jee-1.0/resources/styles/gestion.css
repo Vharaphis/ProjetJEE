@@ -1,0 +1,76 @@
+table {
+    border-collapse: collapse;
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+table thead th{
+    border-top:none;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+}
+
+
+/* Styles pour les en-têtes */
+h1 {
+    text-align: center;
+    color: #4285f4;
+}
+
+.filter-input-container {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border: 0.0625em solid #ccc;
+    border-radius: 0.25em;
+    padding: 0.3125em;
+    width: 15.625em !important; /* Ajustez la largeur selon vos besoins */
+}
+
+.filter-input-container input[type="text"] {
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-left:0.5em;
+    padding: 0.3125em;
+}
+
+.filter-input-container i {
+    margin-right: 0.3125em;
+    color: #888;
+}
+
+.buttonFilter{
+    width: 10em !important;
+}
+
+.inputs{
+    width: 98%;
+    display: flex;
+    margin:0 auto;
+    margin-top: 1em;
+}
+
+.inputs .buttons{
+    margin-left: auto
+}
+
+.researchTable{
+    width: 80%;
+    margin:0 auto;
+}
+
+.create-user{
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+    width: fit-content!important;
+    padding: 1em!important;
+}
+
