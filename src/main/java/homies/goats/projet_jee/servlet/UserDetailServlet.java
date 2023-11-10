@@ -33,17 +33,17 @@ public class UserDetailServlet extends HttpServlet {
     private CompanySessionBean companySessionBean;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        //TODO
         Integer userId = getConvertedToIntIdOrNull(request.getParameter("userId"));
         if(userId == null){
             response.sendRedirect("gestion");
         }
+
         UserEntity user = userSessionBean.getUserById(userId);
         if(user == null){
             response.sendRedirect("gestion");
             return;
         }
-        request.setAttribute("mainUser", user);
+        request.setAttribute("user", user);
 
         //Si apprenti => on aura "associatedApprentice" mais pas "associatedTutor" et vice-versa
         if(user.getUserType().equals(UserType.Apprentice.getType())){
@@ -51,7 +51,7 @@ public class UserDetailServlet extends HttpServlet {
 
             Integer idCompany = associatedApprentice.getIdCompany(), idTutor = associatedApprentice.getIdTutor();
             CompanyEntity apprenticeCompany = idCompany != null ? companySessionBean.getCompanyById(associatedApprentice.getIdCompany()) : null;
-            UserEntity apprenticeTutor = idTutor != null ? userSessionBean.getUserById(associatedApprentice.getIdTutor()) : null;
+            UserEntity apprenticeTutor = idTutor != null ? userSessionBean.getUserByIdTutor(associatedApprentice.getIdTutor()) : null;
 
             request.setAttribute("associatedApprentice", associatedApprentice);
             request.setAttribute("apprenticeCompany", apprenticeCompany);
@@ -59,6 +59,7 @@ public class UserDetailServlet extends HttpServlet {
 
         } else if(user.getUserType().equals(UserType.Tutor.getType())){
             TutorEntity associatedTutor = tutorSessionBean.getTutorByUserId(user.getUserId());
+
             List<UserEntity> tutorApprentices = associatedTutor != null ? userSessionBean.getTutorApprentices(associatedTutor.getIdTutor()) : null;
 
             request.setAttribute("associatedTutor", associatedTutor);
