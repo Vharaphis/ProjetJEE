@@ -15,7 +15,7 @@
 
 <header>
     <div class="left">
-        <img src="${pageContext.request.contextPath}/resources/images/iron.png" alt="Logo du site">
+        <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="Logo du site">
         <button class="submit buttonHeader" onclick="location.href='${pageContext.request.contextPath}/gestion';"> < Back </button>
     </div>
     <div class="right">&nbsp;&nbsp;
@@ -40,7 +40,6 @@
                 Apprentice Information
             </c:if>
         </h1>
-
         <div class="half-width flex">
             <span class="bold">Lastname</span>
             <span>${user.lastname}</span>
@@ -49,8 +48,6 @@
             <span class="bold">Forename</span>
             <span>${user.forename}</span>
         </div>
-    </div>
-    <div class="input-row">
         <div class="half-width flex">
             <span class="bold">Email</span>
             <span>${user.email}</span>
@@ -60,11 +57,10 @@
             <span>${user.phone}</span>
         </div>
     </div>
-    <hr />
 
     <c:if test="${associatedApprentice != null}">
         <div class="details-apprenticeInformation">
-            <h1 class="details-title">Company And School Informations</h1>
+            <h1 class="details-title">Company And School Information</h1>
 
             <div class="half-width flex">
                 <span class="bold">Program</span>
@@ -87,50 +83,57 @@
                         </c:choose>
                     </span>
                 </div>
+                <div class="half-width flex">
+                    <span class="bold">Company</span>
+                    <span>${apprenticeCompany.socialReason}</span>
+                    <span>${apprenticeCompany.companyAddress}</span>
+                    <span>${apprenticeCompany.companyInfos}</span>
+                </div>
+                <div class="half-width flex">
+                    <span class="bold">Tutor</span>
+                    <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
+                </div>
             </div>
-            <div class="half-width flex">
-                <span class="bold">Company</span>
-                <span>${apprenticeCompany.socialReason}</span>
-                <span>${apprenticeCompany.companyAddress}</span>
-                <span>${apprenticeCompany.companyInfos}</span>
-            </div>
-            <div class="half-width flex">
-                <span class="bold">Tutor</span>
-                <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
-            </div>
+
+
+        <div class="details-apprenticeInformation">
+            <h1 class="details-title">Tutor's Apprentices</h1>
+            <!-- ON ARRIVE EN DESSOUS UNIQUEMENT QUUAND ON DISPLAY LES INFOS DU TUTEUR : TU ME FAIS LE CSS WALLAH-->
+            <c:if test="${associatedTutor != null}">
+                <c:if test="${not empty tutorApprentices}">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Forename</th>
+                            <th>Role</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <!-- TUTOR APPRENTICES CONTIENT LA LISTE D'APPRENTI D'UN TUTEUR-->
+                        <c:forEach var="apprentice" items="${tutorApprentices}">
+                            <tr>
+                                <td>${apprentice.lastname}</td>
+                                <td>${apprentice.forename}</td>
+                                <td>${apprentice.userType}</td>
+                                <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/detail?userId=${apprentice.userId}';">Details</button></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:if>
+                <c:if test="${empty tutorApprentices}">
+
+                </c:if>
+                <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-tutor?idTutor=${associatedTutor.idTutor}';">Update Tutor's Information</button>
+            </c:if>
+
+        </div>
 
         </div>
         <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
     </c:if>
 
-    <!-- ON ARRIVE EN DESSOUS UNIQUEMENT QUUAND ON DISPLAY LES INFOS DU TUTEUR : TU ME FAIS LE CSS WALLAH-->
-    <c:if test="${associatedTutor != null}">
-        <c:if test="${not empty tutorApprentices}">
-            <table>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Forename</th>
-                    <th>Role</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <!-- TUTOR APPRENTICES CONTIENT LA LISTE D'APPRENTI D'UN TUTEUR-->
-                <c:forEach var="apprentice" items="${tutorApprentices}">
-                    <tr>
-                        <td>${apprentice.lastname}</td>
-                        <td>${apprentice.forename}</td>
-                        <td>${apprentice.userType}</td>
-                        <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/detail?userId=${apprentice.userId}';">Details</button></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </c:if>
-        <c:if test="${empty tutorApprentices}">
 
-        </c:if>
-        <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-tutor?idTutor=${associatedTutor.idTutor}';">Update Tutor's Information</button>
-    </c:if>
 
     <c:if test="${associatedApprentice == null && associatedTutor == null}">
         <h3>NO DATA ABOUT THE USER TYPE. THIS IS A PROBLEM.</h3>
