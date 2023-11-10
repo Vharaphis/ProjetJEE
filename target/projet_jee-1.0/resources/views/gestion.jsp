@@ -50,7 +50,7 @@
 
     <div class="filter-input-container">
       <i class="fas fa-search"></i> <!-- Magnifying glass icon (Font Awesome) -->
-      <input type="text" placeholder="Filter">
+      <input type="text" id="filterInput" placeholder="Filter" oninput="filterTabWithSearchInput()">
     </div>
 
     <c:if test="${authenticatedUser.userType == 'Tutor'}">
@@ -65,7 +65,7 @@
   <div class="tablo">
     <c:if test="${not company}">
       <c:if test="${not empty LIST}">
-        <table>
+        <table id="userTable">
           <thead>
             <tr>
               <th>Name</th>
@@ -260,22 +260,22 @@
       <span class="close" id="close-popup-create-company" onclick="closePopupCreateCompany()">&times;</span>
 
       <h1>Create a new Company</h1>
-      <form method="POST" action="create">
+      <form method="POST" action="create-company">
         <div class="input-row">
           <div class="half-width">
-            <label for="name">Social Reason</label>
-            <input type="text" id="socialReason" name="name" class="fillInput" required>
+            <label for="socialReason">Social Reason</label>
+            <input type="text" id="socialReason" name="socialReason" class="fillInput" required>
           </div>
           <div class="half-width">
-            <label for="forename">Company Address</label>
-            <input type="text" id="companyAddress" name="forename" class="fillInput" required>
+            <label for="companyAddress">Company Address</label>
+            <input type="text" id="companyAddress" name="companyAddress" class="fillInput" required>
           </div>
         </div>
 
         <div class="input-row">
           <div class="width">
-            <label for="email">Company Info</label>
-            <textarea id="companyInfo" name="email" class="fillInput" required></textarea>
+            <label for="companyInfo">Company Info</label>
+            <textarea id="companyInfo" name="companyInfo" class="fillInput" required></textarea>
           </div>
         </div>
         <input type="submit" value="Create" class="submit">

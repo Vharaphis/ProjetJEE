@@ -31,33 +31,41 @@
 
 
 <div class="details">
+    <div class="details-apprenticeInformation">
+        <h1 class="details-title">
+            <c:if test="${associatedTutor != null}">
+                Tutor Information
+            </c:if>
+            <c:if test="${associatedTutor == null}">
+                Apprentice Information
+            </c:if>
+        </h1>
 
-
-    <div class="input-row">
         <div class="half-width flex">
             <span class="bold">Lastname</span>
-            <span>${mainUser.lastname}</span>
+            <span>${user.lastname}</span>
         </div>
         <div class="half-width flex">
             <span class="bold">Forename</span>
-            <span>${mainUser.forename}</span>
+            <span>${user.forename}</span>
         </div>
     </div>
     <div class="input-row">
         <div class="half-width flex">
             <span class="bold">Email</span>
-            <span>${mainUser.email}</span>
+            <span>${user.email}</span>
         </div>
         <div class="half-width flex">
             <span class="bold">Phone Number</span>
-            <span>${mainUser.phone}</span>
+            <span>${user.phone}</span>
         </div>
     </div>
     <hr />
 
     <c:if test="${associatedApprentice != null}">
-        <h3 class="popup-title">Apprentice</h3>
-        <div class="input-row">
+        <div class="details-apprenticeInformation">
+            <h1 class="details-title">Company And School Informations</h1>
+
             <div class="half-width flex">
                 <span class="bold">Program</span>
                 <span>${associatedApprentice.program}</span>
@@ -66,8 +74,6 @@
                 <span class="bold">Academic Year</span>
                 <span>${associatedApprentice.academicYear}</span>
             </div>
-        </div>
-        <div class="input-row">
             <div class="half-width flex">
                 <span class="bold">Major</span>
                 <span>${associatedApprentice.major}</span>
@@ -75,14 +81,13 @@
             <div class="half-width flex">
                 <span class="bold">Is Archived</span>
                 <span>
-                    <c:choose>
-                        <c:when test="${associatedApprentice.isArchived}">True</c:when>
-                        <c:otherwise>False</c:otherwise>
-                    </c:choose>
-                </span>
+                        <c:choose>
+                            <c:when test="${associatedApprentice.isArchived}">True</c:when>
+                            <c:otherwise>False</c:otherwise>
+                        </c:choose>
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="input-row">
             <div class="half-width flex">
                 <span class="bold">Company</span>
                 <span>${apprenticeCompany.socialReason}</span>
@@ -91,37 +96,45 @@
             </div>
             <div class="half-width flex">
                 <span class="bold">Tutor</span>
-                <span><a href="details?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
+                <span><a href="detail?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
             </div>
+
         </div>
-        <button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
+        <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
     </c:if>
 
+    <!-- ON ARRIVE EN DESSOUS UNIQUEMENT QUUAND ON DISPLAY LES INFOS DU TUTEUR : TU ME FAIS LE CSS WALLAH-->
     <c:if test="${associatedTutor != null}">
-        <h3 class="popup-title">Tutor</h3>
-        <div class="input-row">
-            <div class="half-width flex">
-                <span class="bold">Address</span>
-                <span>4 rue des Chasseurs</span>
-            </div>
-            <div class="half-width flex">
-                <span class="bold">Infos</span>
-                <span>A la cambrousse</span>
-            </div>
-        </div>
+        <c:if test="${not empty tutorApprentices}">
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Forename</th>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <!-- TUTOR APPRENTICES CONTIENT LA LISTE D'APPRENTI D'UN TUTEUR-->
+                <c:forEach var="apprentice" items="${tutorApprentices}">
+                    <tr>
+                        <td>${apprentice.lastname}</td>
+                        <td>${apprentice.forename}</td>
+                        <td>${apprentice.userType}</td>
+                        <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/detail?userId=${apprentice.userId}';">Details</button></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:if>
+        <c:if test="${empty tutorApprentices}">
+
+        </c:if>
+        <button class="submit updateButtonDetails" onclick="location.href='${pageContext.request.contextPath}/update-tutor?idTutor=${associatedTutor.idTutor}';">Update Tutor's Information</button>
     </c:if>
 
     <c:if test="${associatedApprentice == null && associatedTutor == null}">
         <h3>NO DATA ABOUT THE USER TYPE. THIS IS A PROBLEM.</h3>
     </c:if>
-
-
-</div>
-
-
-
-
-
 
 
 </body>
