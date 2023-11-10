@@ -20,11 +20,11 @@
 
   <div class="left">
     <img src="${pageContext.request.contextPath}/resources/images/iron.png" alt="Logo du site">
-    <h1>Hello ${authenticatedUser.forename} ${authenticatedUser.lastname}</h1>
+    <h1 class="white">Hello ${authenticatedUser.forename} ${authenticatedUser.lastname}</h1>
   </div>
   <div class="right">
-    <div class="user-dropdown">
-      <button class="submit">&nbsp;Lists&nbsp;</button>
+    <div class="user-dropdown marginRight">
+      <button class="submit buttonHeader">&nbsp;Lists&nbsp;</button>
       <div class="dropdown-content">
         <a href="${pageContext.request.contextPath}/gestion?type=tutor">List Tutors</a>
         <a href="${pageContext.request.contextPath}/gestion">List Current Apprentices</a>
@@ -55,7 +55,7 @@
 
     <div class="buttons">
       <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
-      <input type="submit" value="Create Company" onclick="openPopupCreateUser()" class="submit buttonFilter">
+      <input type="submit" value="Create Company" onclick="openPopupCreateCompany()" class="submit buttonFilter">
     </div>
   </div>
 
@@ -248,6 +248,41 @@
     </form>
 
   </div>
+
+</div>
+
+
+
+  <div id="popupCreateCompany" class="popup">
+    <div class="popup-content">
+      <span class="close" id="close-popup-create-company" onclick="closePopupCreateCompany()">&times;</span>
+
+      <h1>Create a new Company</h1>
+      <form method="POST" action="create">
+        <div class="input-row">
+          <div class="half-width">
+            <label for="name">Social Reason</label>
+            <input type="text" id="socialReason" name="name" class="fillInput" required>
+          </div>
+          <div class="half-width">
+            <label for="forename">Company Address</label>
+            <input type="text" id="companyAddress" name="forename" class="fillInput" required>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="width">
+            <label for="email">Company Info</label>
+            <textarea id="companyInfo" name="email" class="fillInput" required></textarea>
+          </div>
+        </div>
+        <input type="submit" value="Create" class="submit">
+      </form>
+
+    </div>
+
+
+
 </div>
 
 

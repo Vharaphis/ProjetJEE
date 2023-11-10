@@ -23,6 +23,12 @@ h1, h2, h3, h4 {
     flex-direction: column;
 }
 
+.input-row .width {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .input-row .half-width:nth-child(even) {
     padding-left:0.5em;
 }
@@ -68,6 +74,12 @@ body {
     font-family: 'Google Sans', 'Google Sans Text', Roboto, sans-serif;
     font-size: 16px;
 }
+
+.white{
+    color:#ffffff;
+}
+
+
 
 select {
     width: 100%;

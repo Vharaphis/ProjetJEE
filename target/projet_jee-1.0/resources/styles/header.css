@@ -14,15 +14,38 @@ header {
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
+.buttonHeader{
+    color: #4285f4!important;
+    background-color: #f0f0f1!important;
+}
+
+.marginRight{
+    margin-right: 60px!important;
+}
+
+.buttonHeader:hover{
+    background-color: #dcdcde!important;
+}
+
 .left {
     display: flex;
     align-items: center;
 }
 
+.ellipsis{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .left img {
-    width: 2.5rem; /* équivalent à 40px */
-    height: 2.5rem; /* équivalent à 40px */
-    margin-right: 0.625rem; /* équivalent à 10px */
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.625rem;
+}
+
+.left>*{
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .left h1 {

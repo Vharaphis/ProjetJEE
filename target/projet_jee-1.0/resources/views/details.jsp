@@ -5,16 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
+    <link href="${pageContext.request.contextPath}/resources/styles/header.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/styles/details.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/resources/styles/common.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-    <button class="submit" onclick="location.href='${pageContext.request.contextPath}/gestion';">Go back to main page...</button>
+<header>
 
-    <!-- Mettre ça au propre, la logique principale y est -->
-    <span class="close" id="close-popup-edit" onclick="closePopupDetail()">&times;</span>
+    <div class="left">
+        <img src="${pageContext.request.contextPath}/resources/images/iron.png" alt="Logo du site">
+        <button class="submit buttonHeader" onclick="location.href='${pageContext.request.contextPath}/gestion';"> < Back </button>
+    </div>
+    <div class="right">&nbsp;&nbsp;
+        <div class="user-dropdown">
+            <img src="${pageContext.request.contextPath}/resources/images/lol.png" alt="User icon">
+            <div class="dropdown-content">
+                <a href="${pageContext.request.contextPath}/update-profile">Update profile</a>
+                <a href="${pageContext.request.contextPath}/logout">Disconnect</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="details">
+
 
     <div class="input-row">
         <div class="half-width flex">
@@ -96,6 +114,11 @@
     <c:if test="${associatedApprentice == null && associatedTutor == null}">
         <h3>NO DATA ABOUT THE USER TYPE. THIS IS A PROBLEM.</h3>
     </c:if>
+
+
+</div>
+
+
 
 
 
