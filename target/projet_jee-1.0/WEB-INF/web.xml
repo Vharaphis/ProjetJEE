@@ -20,7 +20,7 @@
 
     <servlet>
         <servlet-name>UpdateProfileServlet</servlet-name>
-        <servlet-class>homies.goats.projet_jee.servlet.edit.UpdateProfileServlet</servlet-class>
+        <servlet-class>homies.goats.projet_jee.servlet.update.UpdateProfileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UpdateProfileServlet</servlet-name>
@@ -28,12 +28,21 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>EditCompanyServlet</servlet-name>
-        <servlet-class>homies.goats.projet_jee.servlet.edit.UpdateCompanyServlet</servlet-class>
+        <servlet-name>UpdateCompanyServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.update.UpdateCompanyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>EditCompanyServlet</servlet-name>
+        <servlet-name>UpdateCompanyServlet</servlet-name>
         <url-pattern>/update-company</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateCompanyServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.create.CreateCompanyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateCompanyServlet</servlet-name>
+        <url-pattern>/create-company</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -88,6 +97,15 @@
     <servlet-mapping>
         <servlet-name>DetailServlet</servlet-name>
         <url-pattern>/detail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateApprenticeServlet</servlet-name>
+        <servlet-class>homies.goats.projet_jee.servlet.update.UpdateApprenticeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateApprenticeServlet</servlet-name>
+        <url-pattern>/update-apprentice</url-pattern>
     </servlet-mapping>
 
     <filter>

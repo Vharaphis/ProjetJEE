@@ -95,6 +95,7 @@
                 <span><a href="details?userId=${apprenticeTutor.userId}">${apprenticeTutor.forename} ${apprenticeTutor.lastname}</a></span>
             </div>
         </div>
+        <button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-apprentice?idApprentice=${associatedApprentice.idApprentice}';">Update Apprentice's Information</button>
     </c:if>
 
     <c:if test="${associatedTutor != null}">

@@ -49,8 +49,7 @@ public class UserSessionBean {
     //returns true if it fails
     public boolean updateUser(UserEntity authenticatedUser, UserEntity modifiedUser, String newPassword, String passwordConfirmation) {
         //name, forename, email and phone are fields that are automatically set in the .jsp. They shouldn't be nulled.
-        if(isNullOrBlank(modifiedUser.getLastname()) || isNullOrBlank(modifiedUser.getForename()) ||
-                isNullOrBlank(modifiedUser.getEmail()) || isNullOrBlank(modifiedUser.getPhone())){
+        if(isNullOrBlank(modifiedUser.getLastname()) || isNullOrBlank(modifiedUser.getForename()) || isNullOrBlank(modifiedUser.getEmail()) || isNullOrBlank(modifiedUser.getPhone())){
             return true;
         }
 
@@ -144,7 +143,7 @@ public class UserSessionBean {
         return BCrypt.checkpw(password, hashedPassword);
     }
 
-    public boolean isNullOrBlank(String s){
+    public static boolean isNullOrBlank(String s){
         return (s == null || s.isBlank());
     }
 }

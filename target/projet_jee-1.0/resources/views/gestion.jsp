@@ -53,10 +53,12 @@
       <input type="text" placeholder="Filter">
     </div>
 
-    <div class="buttons">
-      <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
-      <input type="submit" value="Create Company" onclick="openPopupCreateCompany()" class="submit buttonFilter">
-    </div>
+    <c:if test="${authenticatedUser.userType == 'Tutor'}">
+      <div class="buttons">
+        <input type="submit" value="Create User" onclick="openPopupCreateUser()" class="submit buttonFilter">
+        <input type="submit" value="Create Company" onclick="openPopupCreateCompany()" class="submit buttonFilter">
+      </div>
+    </c:if>
   </div>
 
 
@@ -105,7 +107,7 @@
               <td>${company.socialReason}</td>
               <td>${company.companyAddress}</td>
               <td>${company.companyInfos}</td>
-              <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-company?companyId=${company.userId}';">Details</button></td>
+              <td><button class="submit" onclick="location.href='${pageContext.request.contextPath}/update-company?companyId=${company.idCompany}';">Details</button></td>
             </tr>
           </c:forEach>
         </table>

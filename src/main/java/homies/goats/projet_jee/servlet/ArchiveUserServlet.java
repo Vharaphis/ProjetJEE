@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+import static homies.goats.projet_jee.utils.utils.getConvertedToIntIdOrNull;
+
 public class ArchiveUserServlet extends HttpServlet {
     @EJB
     private UserSessionBean userSessionBean;
@@ -20,26 +22,13 @@ public class ArchiveUserServlet extends HttpServlet {
     private ApprenticeSessionBean apprenticeSessionBean;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String userId = request.getParameter("userId");
-
-        if(userId == null || userId.isBlank()){
-            System.out.println("User is null");
+        Integer userId = getConvertedToIntIdOrNull(request.getParameter("userId"));
+        if(userId == null){
             response.sendRedirect("gestion");
-            return;
         }
 
-        int convertedUserId;
-        try {
-            convertedUserId = Integer.parseInt(userId);
-        } catch (NumberFormatException e) {
-            System.out.println("Given userId is not numerical.");
-            response.sendRedirect("gestion");
-            return;
-        }
-
-        ApprenticeEntity apprentice = apprenticeSessionBean.getApprenticeByUserId(convertedUserId);
+        ApprenticeEntity apprentice = apprenticeSessionBean.getApprenticeByUserId(userId);
         if(apprentice == null){
-            System.out.println("Apprentice is null");
             response.sendRedirect("gestion");
             return;
         }
