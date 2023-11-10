@@ -35,7 +35,7 @@
     </div>
     &nbsp;&nbsp;
     <div class="user-dropdown">
-      <img src="${pageContext.request.contextPath}/resources/images/lol.png" alt="User icon">
+      <img src="${pageContext.request.contextPath}/resources/images/profile.png" alt="User icon">
       <div class="dropdown-content">
         <a href="${pageContext.request.contextPath}/update-profile">Update profile</a>
         <a href="${pageContext.request.contextPath}/logout">Disconnect</a>

@@ -1,0 +1,27 @@
+.details{
+    padding: 3em;
+    display: flex;
+}
+
+.details-title{
+    background-color: #4285f4!important;
+    color: white!important;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.details-apprenticeInformation{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.updateButtonDetails {
+    margin: 3em auto;
+    display: block;
+    width: fit-content!important;
+}
