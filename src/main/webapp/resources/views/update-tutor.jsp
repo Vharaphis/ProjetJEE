@@ -36,14 +36,14 @@
         <select id="apprenticeList" name="apprenticeList" multiple="multiple" size="5">
             <c:forEach var="apprentice" items="${allApprentices}">
                 <!-- Met une couleur différente si apprentice.idTutor == tutor.idTutor-->
-                <!-- PREMIER CAS : Bleu, ou couleur qui tape à l'oeil-->
+                <!-- PREMIER CAS : -->
                 <c:if test="${apprentice.idTutor == tutor.idTutor}">
-                    <option class="A" value="${apprentice.userId}">${apprentice.lastname} ${apprentice.forename}</option>
+                    <option class="green" value="${apprentice.userId}">${apprentice.lastname} ${apprentice.forename}</option>
                 </c:if>
 
-                <!-- DEUXIEME CAS : Gris bien banal sa mère-->
+                <!-- DEUXIEME CAS :-->
                 <c:if test="${apprentice.idTutor != tutor.idTutor}">
-                    <option class="B" value="${apprentice.userId}">${apprentice.lastname} ${apprentice.forename}</option>
+                    <option class="grey" value="${apprentice.userId}">${apprentice.lastname} ${apprentice.forename}</option>
                 </c:if>
             </c:forEach>
         </select>

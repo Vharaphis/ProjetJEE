@@ -31,3 +31,11 @@
     display: block;
     width: fit-content!important;
 }
+
+.grey{
+    background-color: #dcdcde ;
+}
+
+.green{
+    background-color: #68de7c;
+}
